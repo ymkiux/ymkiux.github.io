@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="Spingweb demo初运行警告">
+  <meta name="description" content="Spingweb demo初运行BUG">
 <meta name="keywords" content="spirng,java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spingboot初遇web项目警告">
-<meta property="og:url" content="http://yoursite.com/2020/09/09/Spingboot初遇web项目警告/index.html">
+<meta property="og:title" content="Spingboot初遇web项目BUG">
+<meta property="og:url" content="http://yoursite.com/2020/09/09/Spingboot初遇web项目BUG/index.html">
 <meta property="og:site_name" content="次元居">
-<meta property="og:description" content="Spingweb demo初运行警告">
+<meta property="og:description" content="Spingweb demo初运行BUG">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-09T08:18:10.190Z">
+<meta property="og:updated_time" content="2020-09-09T08:31:26.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spingboot初遇web项目警告">
-<meta name="twitter:description" content="Spingweb demo初运行警告">
+<meta name="twitter:title" content="Spingboot初遇web项目BUG">
+<meta name="twitter:description" content="Spingweb demo初运行BUG">
 
 
 
@@ -122,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2020/09/09/Spingboot初遇web项目警告/">
+  <link rel="canonical" href="http://yoursite.com/2020/09/09/Spingboot初遇web项目BUG/">
 
 
 
@@ -132,7 +132,7 @@
   };
 </script>
 
-  <title>Spingboot初遇web项目警告 | 次元居</title>
+  <title>Spingboot初遇web项目BUG | 次元居</title>
   
 
 
@@ -411,7 +411,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/Spingboot初遇web项目警告/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/Spingboot初遇web项目BUG/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ymkiux">
@@ -428,7 +428,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spingboot初遇web项目警告
+          <h1 class="post-title" itemprop="name headline">Spingboot初遇web项目BUG
 
               
             
@@ -457,7 +457,7 @@
                 
               
 
-              <time title="创建时间：2020-09-09 12:09:00 / 修改时间：16:18:10" itemprop="dateCreated datePublished" datetime="2020-09-09T12:09:00+08:00">2020-09-09</time>
+              <time title="创建时间：2020-09-09 12:09:00 / 修改时间：16:31:26" itemprop="dateCreated datePublished" datetime="2020-09-09T12:09:00+08:00">2020-09-09</time>
             
 
             
@@ -514,8 +514,8 @@
       
 
       
-        <p>Spingweb demo初运行警告<a id="more"></a></p>
-<h5 id="警告一"><a href="#警告一" class="headerlink" title="警告一"></a>警告一</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OpenJDK 64-Bit Server VM warning: Options -Xverify:none and -noverify were deprecated in JDK 13 and will likely be removed in a future release.</span><br></pre></td></tr></table></figure>
+        <p>Spingweb demo初运行BUG<a id="more"></a></p>
+<h4 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h4><h5 id="警告一"><a href="#警告一" class="headerlink" title="警告一"></a>警告一</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OpenJDK 64-Bit Server VM warning: Options -Xverify:none and -noverify were deprecated in JDK 13 and will likely be removed in a future release.</span><br></pre></td></tr></table></figure>
 <h6 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h6><blockquote>
 <p>在idea 中,依次选择<strong>RUN &gt;&gt; Edit Configurations…</strong> ,找到 Spring boot 相关选项,<strong>取消勾选 Enable lanuch optimization</strong>即可</p>
 </blockquote>
@@ -529,6 +529,11 @@
 <p>在application.yml配置文件中</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.jpa.open-in-view=false</span><br></pre></td></tr></table></figure>
+<h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.</span><br></pre></td></tr></table></figure>
+<h5 id="解决方法-3"><a href="#解决方法-3" class="headerlink" title="解决方法"></a>解决方法</h5><blockquote>
+<p>在连接字符串后面加上<strong>?serverTimezone=UTC</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: jdbc:mysql://localhost:3306/login?serverTimezone=UTC</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -566,7 +571,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="/2020/09/09/Spingboot初遇web项目警告/" title="Spingboot初遇web项目警告">2020/09/09/Spingboot初遇web项目警告/</a>
+    <a href="/2020/09/09/Spingboot初遇web项目BUG/" title="Spingboot初遇web项目BUG">2020/09/09/Spingboot初遇web项目BUG/</a>
   </li>
   <li class="post-copyright-license">
     <strong>许可协议： </strong>
@@ -789,7 +794,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#警告一"><span class="nav-number">1.</span> <span class="nav-text">警告一</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#解决方法"><span class="nav-number">1.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#警告二"><span class="nav-number">2.</span> <span class="nav-text">警告二</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#解决方法-1"><span class="nav-number">2.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#警告三"><span class="nav-number">3.</span> <span class="nav-text">警告三</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#解决方法-2"><span class="nav-number">3.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#警告"><span class="nav-number">1.</span> <span class="nav-text">警告</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#警告一"><span class="nav-number">1.1.</span> <span class="nav-text">警告一</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#解决方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#警告二"><span class="nav-number">1.2.</span> <span class="nav-text">警告二</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#解决方法-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#警告三"><span class="nav-number">1.3.</span> <span class="nav-text">警告三</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#解决方法-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误"><span class="nav-number">2.</span> <span class="nav-text">错误</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方法-3"><span class="nav-number">2.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol></div>
             
 
           </div>
