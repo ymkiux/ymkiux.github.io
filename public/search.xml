@@ -162,7 +162,7 @@
       <link href="/2019/06/13/%E6%9C%89%E5%85%B3github%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/"/>
       <url>/2019/06/13/%E6%9C%89%E5%85%B3github%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</url>
       
-        <content type="html"><![CDATA[<p>更优雅的解决有关github网站无法访问问题<a id="more"></a></p><h4 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h4><h5 id="修改本地的hosts"><a href="#修改本地的hosts" class="headerlink" title="修改本地的hosts"></a>修改本地的hosts</h5><blockquote><p>Linux下路径：/etc/hosts</p><p>windows下路径：C:\Windows\System32\drivers\etc\hosts</p></blockquote><h5 id="IP在线测速"><a href="#IP在线测速" class="headerlink" title="IP在线测速"></a>IP在线测速</h5><blockquote><p><a href="https://tools.ipip.net/dns.php" target="_blank" rel="noopener">https://tools.ipip.net/dns.php</a></p></blockquote><h6 id="搜索github-com、github-io"><a href="#搜索github-com、github-io" class="headerlink" title="搜索github.com、github.io"></a>搜索github.com、github.io</h6><blockquote><p>找到响应最快的ip</p><p>打开hosts文件</p><p>把这个ip代理依照以下格式填进去</p></blockquote><h6 id="hosts使用格式"><a href="#hosts使用格式" class="headerlink" title="hosts使用格式"></a>hosts使用格式</h6><blockquote><p>66.249.89.104    github.com<br>13.229.188.59    github.com<br>185.199.109.153    github.io<br>185.199.111.153    github.io<br>185.199.108.153    github.io<br>185.199.110.153    github.io</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<p>更优雅的解决有关github网站无法访问问题<a id="more"></a></p><h4 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h4><h5 id="修改本地的hosts"><a href="#修改本地的hosts" class="headerlink" title="修改本地的hosts"></a>修改本地的hosts</h5><blockquote><p>Linux下路径：/etc/hosts</p><p>windows下路径：C:\Windows\System32\drivers\etc\hosts</p></blockquote><h5 id="IP在线测速"><a href="#IP在线测速" class="headerlink" title="IP在线测速"></a>IP在线测速</h5><blockquote><p><a href="https://www.ipip.net/ip.html" target="_blank" rel="noopener">https://www.ipip.net/ip.html</a></p></blockquote><h6 id="搜索github-com、github-io"><a href="#搜索github-com、github-io" class="headerlink" title="搜索github.com、github.io"></a>搜索github.com、github.io</h6><blockquote><p>找到响应最快的ip</p><p>打开hosts文件</p><p>把这个ip代理依照以下格式填进去</p></blockquote><h6 id="hosts使用格式"><a href="#hosts使用格式" class="headerlink" title="hosts使用格式"></a>hosts使用格式</h6><blockquote><p>66.249.89.104    github.com<br>13.229.188.59    github.com<br>185.199.109.153    github.io</p></blockquote>]]></content>
       
       
       <categories>
@@ -303,9 +303,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> git </tag>
+            
+            <tag> linux </tag>
             
             <tag> github </tag>
             
