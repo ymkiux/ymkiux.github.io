@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>无限循环RecyclerView的完美方案</title>
+      <link href="/2020/09/10/%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AFRecyclerView%E7%9A%84%E5%AE%8C%E7%BE%8E%E6%96%B9%E6%A1%88/"/>
+      <url>/2020/09/10/%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AFRecyclerView%E7%9A%84%E5%AE%8C%E7%BE%8E%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<p>无限循环RecyclerView<a id="more"></a></p><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote><p>当前服务端直播接口数量太少 所以想到这个方法</p></blockquote><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><h5 id="参数取余运算"><a href="#参数取余运算" class="headerlink" title="参数取余运算"></a>参数取余运算</h5><blockquote><p>getItemCount长度无限</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public int getItemCount() &#123;</span><br><span class="line">return Integer.MAX_VALUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>onBindViewHolder() 方法里对position参数取余运算</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onBindViewHolder(ViewHolder holder, int position) </span><br><span class="line">&#123;</span><br><span class="line">     int index =  position % liveList.size();</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h5><blockquote><p>liveList.size为旧getItemCount方法返回值</p></blockquote><blockquote><p>index为新的position与bean类get对应值</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android开发游记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>IDEA中配置MySQL连接异常</title>
       <link href="/2020/09/09/IDEA%E4%B8%AD%E9%85%8D%E7%BD%AEMySQL%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8/"/>
       <url>/2020/09/09/IDEA%E4%B8%AD%E9%85%8D%E7%BD%AEMySQL%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8/</url>
