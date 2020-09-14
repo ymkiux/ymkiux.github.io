@@ -1773,7 +1773,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #306af9;
+  background: #cffffe;
 }
 .feed-link,
 .chat {
@@ -2747,7 +2747,7 @@ hr {
 }
 @media screen and (min-width: 1200px) {
   body {
-    background-image: url("/images/754.png");
+    background-image: url("/images/background.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
