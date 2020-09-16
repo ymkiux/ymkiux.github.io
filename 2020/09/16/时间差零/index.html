@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="更优雅的实现退出提示信息">
+  <meta name="description" content="轻松解决时间差问题">
 <meta name="keywords" content="android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用Snackbar实现双重退出提示信息">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/利用Snackbar实现双重退出提示信息/index.html">
+<meta property="og:title" content="时间差零">
+<meta property="og:url" content="http://yoursite.com/2020/09/16/时间差零/index.html">
 <meta property="og:site_name" content="次元居">
-<meta property="og:description" content="更优雅的实现退出提示信息">
+<meta property="og:description" content="轻松解决时间差问题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-02T06:38:34.301Z">
+<meta property="og:updated_time" content="2020-09-16T08:12:39.589Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用Snackbar实现双重退出提示信息">
-<meta name="twitter:description" content="更优雅的实现退出提示信息">
+<meta name="twitter:title" content="时间差零">
+<meta name="twitter:description" content="轻松解决时间差问题">
 
 
 
@@ -122,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/利用Snackbar实现双重退出提示信息/">
+  <link rel="canonical" href="http://yoursite.com/2020/09/16/时间差零/">
 
 
 
@@ -132,7 +132,7 @@
   };
 </script>
 
-  <title>利用Snackbar实现双重退出提示信息 | 次元居</title>
+  <title>时间差零 | 次元居</title>
   
 
 
@@ -411,7 +411,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/利用Snackbar实现双重退出提示信息/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/16/时间差零/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ymkiux">
@@ -428,7 +428,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">利用Snackbar实现双重退出提示信息
+          <h1 class="post-title" itemprop="name headline">时间差零
 
               
             
@@ -457,24 +457,12 @@
                 
               
 
-              <time title="创建时间：2019-07-01 23:54:00" itemprop="dateCreated datePublished" datetime="2019-07-01T23:54:00+08:00">2019-07-01</time>
+              <time title="创建时间：2020-09-16 15:13:00 / 修改时间：16:12:39" itemprop="dateCreated datePublished" datetime="2020-09-16T15:13:00+08:00">2020-09-16</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-02 14:38:34" itemprop="dateModified" datetime="2019-07-02T14:38:34+08:00">2019-07-02</time>
               
             
           </span>
@@ -526,51 +514,12 @@
       
 
       
-        <p>更优雅的实现退出提示信息<a id="more"></a></p>
-<h6 id="定义参数"><a href="#定义参数" class="headerlink" title="定义参数"></a>定义参数</h6><pre><code>private Timer tExit;
-private static Boolean isExit = false;
-private static final String TAG_EXIT = &quot;exit&quot;;
-</code></pre><h6 id="定义提示信息方法"><a href="#定义提示信息方法" class="headerlink" title="定义提示信息方法"></a>定义提示信息方法</h6><pre><code>private void showSnackBar(View view, String text) {
-    if (snackbar == null) {
-        snackbar = Snackbar.make(view, text, Snackbar.LENGTH_SHORT);
-    } else {
-        snackbar.setText(text);
-        snackbar.setDuration(Snackbar.LENGTH_SHORT);
-    }
-    snackbar.show();
-}
-</code></pre><h6 id="复写onKeyDown方法"><a href="#复写onKeyDown方法" class="headerlink" title="复写onKeyDown方法"></a>复写onKeyDown方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用快捷键ctrl+o  快速找到其方法并生成对应方法以及内容</span><br></pre></td></tr></table></figure>
-<p>于方法内写入以下事件</p>
-<pre><code>if (keyCode == KeyEvent.KEYCODE_BACK) {
-       tExit = null;
-       if (!isExit) {
-           isExit = true; // 准备退出
-           showSnackBar(titleBar, getString(R.string.click_exit));
-           tExit = new Timer();
-           tExit.schedule(new TimerTask() {
-               @Override
-               public void run() {
-                   isExit = false; // 取消退出
-               }
-           }, 2000); 
-       } else {
-           Intent intent = new Intent(this, MainActivity.class);
-           intent.putExtra(MainActivity.TAG_EXIT, true);
-           startActivity(intent);
-       }
-
-       return true;
-   }
-</code></pre><h6 id="注意细节"><a href="#注意细节" class="headerlink" title="注意细节"></a>注意细节</h6><ul>
-<li>启动模式<ul>
-<li>在Androidmanifest清单文件中为所需activity设置android:launchMode=”singleTask”</li>
-</ul>
-</li>
-<li>titleBar参数<ul>
-<li>其实只是我一个自定义标题栏参数</li>
-</ul>
-</li>
-</ul>
+        <p>轻松解决时间差问题<a id="more"></a></p>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p><code>项目需要显示发布的内容与当前时间差值</code></p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><h5 id="当前时间"><a href="#当前时间" class="headerlink" title="当前时间"></a>当前时间</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @return 返回当前时间</span><br><span class="line"> */</span><br><span class="line">public String getTime() &#123;</span><br><span class="line">    Date date = new Date();</span><br><span class="line">    @SuppressLint(&quot;SimpleDateFormat&quot;) SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span><br><span class="line">    return dateFormat.format(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="旧版时间差"><a href="#旧版时间差" class="headerlink" title="旧版时间差"></a>旧版时间差</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 返回时间差</span><br><span class="line"> *</span><br><span class="line"> * @param currTime    当前时间</span><br><span class="line"> * @param releaseTime 接口获取的时间</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">public String getTimeDifference(String currTime, String releaseTime) throws ParseException &#123;</span><br><span class="line">    DateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span><br><span class="line">    Date d1 = dateFormat.parse(currTime);</span><br><span class="line">    Date d2 = dateFormat.parse(releaseTime);</span><br><span class="line">    long diff = d1.getTime() - d2.getTime();</span><br><span class="line">    long days = diff / (1000 * 60 * 60 * 24);</span><br><span class="line">    long hours = (diff - days * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);</span><br><span class="line">    long minutes = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) / (1000 * 60);</span><br><span class="line">    String s = days + &quot;天&quot; + hours + &quot;小时&quot; + minutes + &quot;分&quot;;</span><br><span class="line">    if (days != 0 &amp;&amp; hours != 0 &amp;&amp; minutes != 0) &#123;</span><br><span class="line">        return s;</span><br><span class="line">    &#125;</span><br><span class="line">    if (days != 0) &#123;</span><br><span class="line">        if (hours != 0) &#123;</span><br><span class="line">            if (minutes != 0) &#123;</span><br><span class="line">                return s;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return s.replace(minutes + &quot;分&quot;, &quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            s = s.replace(hours + &quot;小时&quot;, &quot;&quot;);</span><br><span class="line">            if (minutes != 0) &#123;</span><br><span class="line">                return s;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return s.replace(minutes + &quot;分&quot;, &quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        s = s.replace(days + &quot;天&quot;, &quot;&quot;);</span><br><span class="line">        if (hours != 0) &#123;</span><br><span class="line">            if (minutes != 0) &#123;</span><br><span class="line">                return s;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return s.replace(minutes + &quot;分&quot;, &quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            s = s.replace(hours + &quot;小时&quot;, &quot;&quot;);</span><br><span class="line">            if (minutes != 0) &#123;</span><br><span class="line">                return s;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return s.replace(minutes + &quot;分&quot;, &quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="新版时间差"><a href="#新版时间差" class="headerlink" title="新版时间差"></a>新版时间差</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * 返回时间差</span><br><span class="line">     *</span><br><span class="line">     * @param currTime    当前时间</span><br><span class="line">     * @param releaseTime 接口获取的时间</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    public String getTimeDifference(String currTime, String releaseTime) throws ParseException &#123;</span><br><span class="line">        DateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span><br><span class="line">        Date d1 = dateFormat.parse(currTime);</span><br><span class="line">        Date d2 = dateFormat.parse(releaseTime);</span><br><span class="line">        long diff = d1.getTime() - d2.getTime();</span><br><span class="line">        long days = diff / (1000 * 60 * 60 * 24);</span><br><span class="line">        long hours = (diff - days * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);</span><br><span class="line">        long minutes = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) / (1000 * 60);</span><br><span class="line">        String s = days + &quot;天&quot; + hours + &quot;小时&quot; + minutes + &quot;分&quot;;</span><br><span class="line">        if (days != 0 &amp;&amp; hours != 0 &amp;&amp; minutes != 0) &#123;</span><br><span class="line">            return s;</span><br><span class="line">        &#125;</span><br><span class="line">        if (days != 0) &#123;</span><br><span class="line">            return getTime(hours, minutes, s);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            s = s.replace(days + &quot;天&quot;, &quot;&quot;);</span><br><span class="line">            return getTime(hours, minutes, s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String getTime(long hours, long minutes, String s) &#123;</span><br><span class="line">        if (hours != 0) &#123;</span><br><span class="line">            if (minutes != 0) &#123;</span><br><span class="line">                return s;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return s.replace(minutes + &quot;分&quot;, &quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            s = s.replace(hours + &quot;小时&quot;, &quot;&quot;);</span><br><span class="line">            if (minutes != 0) &#123;</span><br><span class="line">                return s;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return s.replace(minutes + &quot;分&quot;, &quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p><code>$days+&quot;天&quot;+$hours+&quot;小时&quot;+$minutes+&quot;分&quot;</code></p>
 
       
     </div>
@@ -608,7 +557,7 @@ private static final String TAG_EXIT = &quot;exit&quot;;
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="/2019/07/01/利用Snackbar实现双重退出提示信息/" title="利用Snackbar实现双重退出提示信息">2019/07/01/利用Snackbar实现双重退出提示信息/</a>
+    <a href="/2020/09/16/时间差零/" title="时间差零">2020/09/16/时间差零/</a>
   </li>
   <li class="post-copyright-license">
     <strong>许可协议： </strong>
@@ -633,8 +582,8 @@ private static final String TAG_EXIT = &quot;exit&quot;;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/21/博客恢复配置实现git重传/" rel="next" title="博客恢复配置实现git重传">
-                <i class="fa fa-chevron-left"></i> 博客恢复配置实现git重传
+              <a href="/2020/09/15/webview隐藏网页元素/" rel="next" title="webview隐藏网页元素">
+                <i class="fa fa-chevron-left"></i> webview隐藏网页元素
               </a>
             
           </div>
@@ -642,10 +591,6 @@ private static final String TAG_EXIT = &quot;exit&quot;;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/06/lint以release打包时发现致命错误/" rel="prev" title="lint以release打包时发现致命错误">
-                lint以release打包时发现致命错误 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -835,7 +780,7 @@ private static final String TAG_EXIT = &quot;exit&quot;;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#定义参数"><span class="nav-number">1.</span> <span class="nav-text">定义参数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#定义提示信息方法"><span class="nav-number">2.</span> <span class="nav-text">定义提示信息方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#复写onKeyDown方法"><span class="nav-number">3.</span> <span class="nav-text">复写onKeyDown方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#注意细节"><span class="nav-number">4.</span> <span class="nav-text">注意细节</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#当前时间"><span class="nav-number">2.1.</span> <span class="nav-text">当前时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#旧版时间差"><span class="nav-number">2.2.</span> <span class="nav-text">旧版时间差</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#新版时间差"><span class="nav-number">2.3.</span> <span class="nav-text">新版时间差</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效果"><span class="nav-number">3.</span> <span class="nav-text">效果</span></a></li></ol></div>
             
 
           </div>
