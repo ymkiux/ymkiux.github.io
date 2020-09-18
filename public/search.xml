@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>实现单个activity加载多个fragment</title>
+      <link href="/2020/09/18/%E5%AE%9E%E7%8E%B0%E5%8D%95%E4%B8%AAactivity%E5%8A%A0%E8%BD%BD%E5%A4%9A%E4%B8%AAfragment/"/>
+      <url>/2020/09/18/%E5%AE%9E%E7%8E%B0%E5%8D%95%E4%B8%AAactivity%E5%8A%A0%E8%BD%BD%E5%A4%9A%E4%B8%AAfragment/</url>
+      
+        <content type="html"><![CDATA[<p>更轻松以及简化activity使用<a id="more"></a></p><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p><code>由另一个界面跳转到当前activity时,携带参数值用来判断本次跳转加载哪个碎片事件</code></p><h5 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h5><p><code>这里通过intent传值</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val intent = Intent(this@SettingActivity, FeedbackActivity::class.java)</span><br><span class="line">                intent.putExtra(&quot;Fragment&quot;, 0)</span><br><span class="line">                startActivity(intent)</span><br><span class="line">                overridePendingTransition(0, 0)</span><br><span class="line">                finish()</span><br></pre></td></tr></table></figure><p><code>当前activity接收加载碎片事件</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">private val userFeedbackFragment = UserFeedbackFragment()</span><br><span class="line">private val bugFeedbackFragment = BugFeedbackFragment()</span><br><span class="line">val intExtra = intent.getIntExtra(&quot;Fragment&quot;, 0)</span><br><span class="line">        when (intExtra) &#123;</span><br><span class="line">            0 -&gt; &#123;</span><br><span class="line">                supportFragmentManager</span><br><span class="line">                    .beginTransaction()</span><br><span class="line">                    .add(R.id.frag_feed, userFeedbackFragment, null)</span><br><span class="line">                    .commit()</span><br><span class="line">            &#125;</span><br><span class="line">            1 -&gt; &#123;</span><br><span class="line">                tv_feed_title.text = getString(R.string.bug_feedback)</span><br><span class="line">                supportFragmentManager</span><br><span class="line">                    .beginTransaction()</span><br><span class="line">                    .add(R.id.frag_feed, bugFeedbackFragment, null)</span><br><span class="line">                    .commit()</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure><h5 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h5><p><code>通过intExtra接收值判断加载设定碎片的加载事件</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android开发游记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>时间差零</title>
       <link href="/2020/09/16/%E6%97%B6%E9%97%B4%E5%B7%AE%E9%9B%B6/"/>
       <url>/2020/09/16/%E6%97%B6%E9%97%B4%E5%B7%AE%E9%9B%B6/</url>
