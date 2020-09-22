@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>LeetCode题解001:两数之和</title>
+      <link href="/2020/09/22/LeetCode%E9%A2%98%E8%A7%A3001-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+      <url>/2020/09/22/LeetCode%E9%A2%98%E8%A7%A3001-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
+      
+        <content type="html"><![CDATA[<p>两数之和题解<a id="more"></a></p><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p style="border:1px solid #ccc">给定一个整数数组nums和一个目标值target，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p><h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [2, 7, 11, 15], target = 9</span><br><span class="line">因为 nums[0] + nums[1] = 2 + 7 = 9</span><br><span class="line">所以返回 [0, 1]</span><br></pre></td></tr></table></figure><h5 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h5><p></p><p style="border:1px solid #ccc">暴力法很简单，遍历每个元素，并查找是否存在一个值与相邻值和为目标值的数，并记录两者下标值</p>提交时间:<strong>4月前</strong>    执行用时:<strong>108ms</strong>    内存消耗:<strong>38.6MB</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">            for (int j = 0; j &lt; nums.length; j++) &#123;</span><br><span class="line">                if (i == j) &#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125; else if (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                    return new int[]&#123;i, j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p></p><p>提交时间:<strong>3 天前</strong>    执行用时: <strong>88 ms</strong>    内存消耗: <strong>39 MB</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        int[] a = new int[2];</span><br><span class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">            for (int j = i + 1; j &lt; nums.length; j++) &#123;</span><br><span class="line">                if (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                    int c = 0;</span><br><span class="line">                    a[c] = i;</span><br><span class="line">                    a[c + 1] = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法练习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>实现单个activity加载多个fragment</title>
       <link href="/2020/09/18/%E5%AE%9E%E7%8E%B0%E5%8D%95%E4%B8%AAactivity%E5%8A%A0%E8%BD%BD%E5%A4%9A%E4%B8%AAfragment/"/>
       <url>/2020/09/18/%E5%AE%9E%E7%8E%B0%E5%8D%95%E4%B8%AAactivity%E5%8A%A0%E8%BD%BD%E5%A4%9A%E4%B8%AAfragment/</url>
