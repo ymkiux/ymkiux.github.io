@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Android系统剪贴板的使用</title>
+      <link href="/2020/09/23/Android%E7%B3%BB%E7%BB%9F%E5%89%AA%E8%B4%B4%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+      <url>/2020/09/23/Android%E7%B3%BB%E7%BB%9F%E5%89%AA%E8%B4%B4%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p>更便捷使用系统剪切板功能<a id="more"></a></p><h5 id="类解"><a href="#类解" class="headerlink" title="类解"></a>类解</h5><p><span style="border:1px solid #ccc">ClipboardManager： 表示一个剪贴板管理器</span><br><span style="border:1px solid #ccc">ClipData： 剪贴板中保存的所有剪贴数据集</span><br><span style="border:1px solid #ccc">ClipData.Item： 剪贴数据集中的一个数据条目</span></p><h5 id="复制内容"><a href="#复制内容" class="headerlink" title="复制内容"></a>复制内容</h5><p><span style="border:1px solid #ccc">内容为obj.toString()</span></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val clipboard=requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager</span><br><span class="line">clipboard.text = obj.toString().trim(&#123; it &lt;= &apos; &apos; &#125;)</span><br><span class="line">val clipData = ClipData.newPlainText(null, obj.toString())</span><br><span class="line">clipboard.setPrimaryClip(clipData)</span><br></pre></td></tr></table></figure><h5 id="获取系统剪贴板内容"><a href="#获取系统剪贴板内容" class="headerlink" title="获取系统剪贴板内容"></a>获取系统剪贴板内容</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);</span><br><span class="line">        if (manager != null) &#123;</span><br><span class="line">            if (manager.hasPrimaryClip() &amp;&amp; manager.getPrimaryClip().getItemCount() &gt; 0) &#123;</span><br><span class="line">                CharSequence charSequence_addedText = manager.getPrimaryClip().getItemAt(0).getText();</span><br><span class="line">                String addedTextString = String.valueOf(charSequence_addedText);</span><br><span class="line">                try &#123;</span><br><span class="line">                    JSONObject obj = new JSONObject(addedTextString);</span><br><span class="line">                    JSONArray scanner = obj.getJSONArray(&quot;scanner&quot;);</span><br><span class="line">                    StringBuffer stringBuffer_scanner = new StringBuffer();</span><br><span class="line">                    for (int i = 0; i &lt; scanner.length(); i++) &#123;</span><br><span class="line">                        String s = (String) scanner.get(i);</span><br><span class="line">                        stringBuffer_scanner.append(s);</span><br><span class="line">                    &#125;</span><br><span class="line">                    tvFragXsScanner.setText(stringBuffer_scanner.toString());</span><br><span class="line">                &#125; catch (JSONException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure><h5 id="清空剪贴板内容"><a href="#清空剪贴板内容" class="headerlink" title="清空剪贴板内容"></a>清空剪贴板内容</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);</span><br><span class="line">        if (manager != null) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                manager.setPrimaryClip(manager.getPrimaryClip());</span><br><span class="line">                manager.setText(null);</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><p><a href="https://developer.android.com/guide/topics/text/copy-paste?hl=zh-cn#java" target="_blank" rel="noopener">Android官方文档复制和粘贴</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android开发游记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode题解001:两数之和</title>
       <link href="/2020/09/22/LeetCode%E9%A2%98%E8%A7%A3001-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
       <url>/2020/09/22/LeetCode%E9%A2%98%E8%A7%A3001-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
