@@ -966,7 +966,7 @@ pre .javascript .function {
 }
 .btn:hover {
   border-color: #222;
-  color: #222;
+  color: #f36;
   background: #fff;
 }
 .btn +.btn {
@@ -1773,7 +1773,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0ea69d;
+  background: #0ee0ff;
 }
 .feed-link,
 .chat {
@@ -2657,7 +2657,7 @@ hr {
   }
 }
 .post-button a:hover {
-  border-bottom-color: #222;
+  border-bottom-color: #f36;
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
