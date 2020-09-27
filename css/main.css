@@ -400,7 +400,7 @@ kbd {
 }
 .table-container {
   margin: 20px 0;
-  overflow: auto;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
 }
 .highlight .table-container {
@@ -1773,7 +1773,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #42da6b;
+  background: #0ea69d;
 }
 .feed-link,
 .chat {
