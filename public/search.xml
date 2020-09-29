@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Android实现自定义倒计时View</title>
+      <link href="/2020/09/29/Android%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%80%92%E8%AE%A1%E6%97%B6View/"/>
+      <url>/2020/09/29/Android%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%80%92%E8%AE%A1%E6%97%B6View/</url>
+      
+        <content type="html"><![CDATA[<p>更优雅的让TextView实时显示预设倒计时场景<a id="more"></a></p><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ul style="text-align: justify"><li style="list-style: circle">项目后台接口已写好，而客户端发送验证码UI逻辑上需要实现类似于倒计时功能</li></ul><h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><h5 id="初步"><a href="#初步" class="headerlink" title="初步"></a>初步</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">while (time &gt; 0) &#123;</span><br><span class="line">      time--</span><br><span class="line">     print(&quot;还剩&quot;+ time + &quot;秒&quot;)</span><br><span class="line">   try &#123;</span><br><span class="line">      Thread.sleep(1000)</span><br><span class="line">     &#125; catch (e: InterruptedException) &#123;</span><br><span class="line">         e.printStackTrace()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="深入"><a href="#深入" class="headerlink" title="深入"></a>深入</h5><h6 id="通过Runnable实现"><a href="#通过Runnable实现" class="headerlink" title="通过Runnable实现"></a>通过Runnable实现</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implements Runnable</span><br></pre></td></tr></table></figure><h6 id="定义其运行标识以及设定时间"><a href="#定义其运行标识以及设定时间" class="headerlink" title="定义其运行标识以及设定时间"></a>定义其运行标识以及设定时间</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">private boolean isRun;</span><br><span class="line">private int time=60;</span><br></pre></td></tr></table></figure><h6 id="开启及停止"><a href="#开启及停止" class="headerlink" title="开启及停止"></a>开启及停止</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void start() &#123;</span><br><span class="line">        this.isRun = true;</span><br><span class="line">        run();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">public void stop() &#123;</span><br><span class="line">        this.isRun = false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h6 id="自减值"><a href="#自减值" class="headerlink" title="自减值"></a>自减值</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void count() &#123;</span><br><span class="line">        time--;</span><br><span class="line">        if (time == 0) &#123;</span><br><span class="line">            stop();</span><br><span class="line">            this.setText(&quot;请重试&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h6 id="run方法"><a href="#run方法" class="headerlink" title="run方法"></a>run方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public void run() &#123;</span><br><span class="line">       count();</span><br><span class="line">       if (isRun) &#123;</span><br><span class="line">           this.setText(&quot;还剩&quot;+time+&quot;秒&quot;);</span><br><span class="line">           postDelayed(this, 1000);</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           removeCallbacks(this);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h6 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tv_fragment_business_settlement_send_verification_code.start()</span><br></pre></td></tr></table></figure><h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><ul style="text-align: justify"><li style="list-style: circle">通过标识真假判断是否执行 若执行便自减至0止步 其变化的数量实时显示在自定义控件上 适用于发送验证码功能模块开发</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android开发游记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>自定义Adapter实现无限存余</title>
       <link href="/2020/09/25/%E8%87%AA%E5%AE%9A%E4%B9%89Adapter%E5%AE%9E%E7%8E%B0%E6%97%A0%E9%99%90%E5%AD%98%E4%BD%99/"/>
       <url>/2020/09/25/%E8%87%AA%E5%AE%9A%E4%B9%89Adapter%E5%AE%9E%E7%8E%B0%E6%97%A0%E9%99%90%E5%AD%98%E4%BD%99/</url>
