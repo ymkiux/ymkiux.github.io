@@ -111,7 +111,7 @@
 <meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;; }">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.dmoe.cc/random.php">
-<meta property="og:updated_time" content="2020-10-04T10:25:34.123Z">
+<meta property="og:updated_time" content="2020-10-04T11:13:45.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机图片">
 <meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;; }">
@@ -519,14 +519,30 @@ setInterval("document.getElementById('week').innerHTML=new Date().toLocaleString
 document.getElementById('week').className="time";
 }
 
-function downImage(){
-window.open(document.querySelector('img').src);
+//要提示的文字
+function ShowMsg(str) {
+$(".payment_time_mask").remove();
+$("body").append("<div class=\"payment_time_mask\" style=\" background-color:#ccc; display:none; text-align: center;z-index: 999;width: 50%;position: fixed;left: 25%;top: 20%;border-radius: 10px;overflow: hidden;\"><span style='font-size: 18px;font-weight:bold;padding: 0.5em;display: block;'>" + str + "</span></div>");
+$(".payment_time_mask").fadeToggle(1500);//持续时间
+$(".payment_time_mask").fadeToggle(1500);
 }
+
+function downImage(){
+//window.open(document.getElementById('imageview').src);
+ShowMsg("暂未开放,耐心等待")
+}
+
+function DownMouseOverL(btn){
+btn.style.backgroundColor="#FFF";
+}
+function DownMouseOutL(btn){
+btn.style.backgroundColor="#FFF";
+}
+
 </script>
 
-<p><style type="text/css"><br>.image_div{<br>text-align:center;<br>}<br>img{<br>vertical-align: middle;<br>}</p>
-<p>.time{<br>text-align:center;<br>}<br></style></p>
-<div class="image_div" ondragstart="return false"><div class="time" style=" text-align:center;"><p id="week" style="color:#ff3366;"></p></div><img id="imageview" src="http://www.dmoe.cc/random.php"><div style="text-align:center;"><button style="background-color:#FFF" onclick="downImage()"> 下载</button></div></div>
+<p><style type="text/css"><br>.image_div{<br>text-align:center;<br>}<br>img{<br>vertical-align: middle;<br>}<br>.time{<br>text-align:center;<br>}<br>.down_divs  div:hover{<br>background-color:#ff3366;<br>}<br></style></p>
+<div class="image_div" ondragstart="return false"><div class="time" style=" text-align:center;"><p id="week" style="color:#ff3366;"></p></div><img id="imageview" src="http://www.dmoe.cc/random.php"><div id="down_div" class="down_divs" style="text-align:center;margin-top:20;"><button width="200" style="background-color:#FFF;border-radius:40px;  " onclick="downImage()" onmouseover="DownMouseOverL(this);" onmouseout="DownMouseOutL(this);"> 下载</button></div></div>
 
 
         
