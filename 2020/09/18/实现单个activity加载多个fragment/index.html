@@ -367,6 +367,23 @@
     <a href="/atlas/" rel="section"><i class="menu-item-icon fa fa-fw fa-skyatlas"></i> <br>图集</a>
 
   </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-pictures">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/pictures/" rel="section"><i class="menu-item-icon fa fa-fw fa-image"></i> <br>每图</a>
+
+  </li>
 
       
       
@@ -864,6 +881,13 @@
 
 <body oncontextmenu="self.event.returnValue=false">
 <script>
+//禁用页面的ctrl功能，来禁止ctrl+s保存功能
+window.addEventListener('keydown', function (e) {
+    if(e.keyCode == 83 && (navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey)){
+        e.preventDefault();
+    }
+})
+
 document.onkeydown = function () {
     if (window.event && window.event.keyCode == 123) {
                 event.keyCode = 0;
