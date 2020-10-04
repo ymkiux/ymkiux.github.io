@@ -892,6 +892,7 @@
 
 <body oncontextmenu="self.event.returnValue=false">
 <script>
+
 //禁用页面的ctrl功能，来禁止ctrl+s保存功能
 window.addEventListener('keydown', function (e) {
     if(e.keyCode == 83 && (navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey)){
@@ -900,6 +901,11 @@ window.addEventListener('keydown', function (e) {
 })
 
 document.onkeydown = function () {
+         //禁止 ctrl+u
+            if (event.ctrlKey && window.event.keyCode==85){
+                return false;
+            }
+
     if (window.event && window.event.keyCode == 123) {
                 event.keyCode = 0;
         event.returnValue = false;

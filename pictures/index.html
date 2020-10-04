@@ -111,7 +111,7 @@
 <meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;; }">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.dmoe.cc/random.php">
-<meta property="og:updated_time" content="2020-10-04T10:01:55.409Z">
+<meta property="og:updated_time" content="2020-10-04T10:25:34.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机图片">
 <meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;; }">
@@ -519,10 +519,14 @@ setInterval("document.getElementById('week').innerHTML=new Date().toLocaleString
 document.getElementById('week').className="time";
 }
 
+function downImage(){
+window.open(document.querySelector('img').src);
+}
 </script>
 
-<p><style type="text/css"><br>.image_div{<br>text-align:center;<br>}<br>img{<br>vertical-align: middle;<br>}<br>.time{<br>text-align:center;<br>}<br></style></p>
-<div class="image_div" ondragstart="return false"><div class="time" style=" text-align:center;"><p id="week" style="color:#ff3366;"></p></div><img id="imageview" src="http://www.dmoe.cc/random.php"></div>
+<p><style type="text/css"><br>.image_div{<br>text-align:center;<br>}<br>img{<br>vertical-align: middle;<br>}</p>
+<p>.time{<br>text-align:center;<br>}<br></style></p>
+<div class="image_div" ondragstart="return false"><div class="time" style=" text-align:center;"><p id="week" style="color:#ff3366;"></p></div><img id="imageview" src="http://www.dmoe.cc/random.php"><div style="text-align:center;"><button style="background-color:#FFF" onclick="downImage()"> 下载</button></div></div>
 
 
         
@@ -723,6 +727,7 @@ document.getElementById('week').className="time";
 
 <body oncontextmenu="self.event.returnValue=false">
 <script>
+
 //禁用页面的ctrl功能，来禁止ctrl+s保存功能
 window.addEventListener('keydown', function (e) {
     if(e.keyCode == 83 && (navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey)){
@@ -731,6 +736,11 @@ window.addEventListener('keydown', function (e) {
 })
 
 document.onkeydown = function () {
+         //禁止 ctrl+u
+            if (event.ctrlKey && window.event.keyCode==85){
+                return false;
+            }
+
     if (window.event && window.event.keyCode == 123) {
                 event.keyCode = 0;
         event.returnValue = false;
