@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;; }">
+  <meta name="description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;;">
 <meta property="og:type" content="website">
 <meta property="og:title" content="随机图片">
 <meta property="og:url" content="http://yoursite.com/pictures/index.html">
 <meta property="og:site_name" content="次元居">
-<meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;; }">
+<meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.dmoe.cc/random.php">
-<meta property="og:updated_time" content="2020-10-05T02:19:25.549Z">
+<meta property="og:updated_time" content="2020-10-05T06:19:55.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机图片">
-<meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;; }">
+<meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;;">
 <meta name="twitter:image" content="http://www.dmoe.cc/random.php">
 
 
@@ -517,6 +517,8 @@ console.log("加载成功");
 window.onload = function name(){
 setInterval("document.getElementById('week').innerHTML=new Date().toLocaleString();", 1000);
 document.getElementById('week').className="time";
+
+getImage();
 }
 
 //要提示的文字
@@ -539,9 +541,33 @@ function DownMouseOutL(btn){
 btn.style.backgroundColor="#FFF";
 }
 
+
+function getImage(){
+$.get("http://www.dmoe.cc/random.php?return=json", function(data){
+console.log("Data Loaded: " + data);
+});
+}
+
+
 </script>
 
-<p><style type="text/css"><br>.image_div{<br>text-align:center;<br>pointer-events: none;<br>}<br>img{<br>vertical-align: middle;<br>}<br>.time{<br>text-align:center;<br>}<br>.down_divs  div:hover{<br>background-color:#ff3366;<br>}<br></style></p>
+<style type="text/css">
+.image_div{
+text-align:center;
+pointer-events: none;
+}
+img{
+vertical-align: middle;
+}
+.time{
+text-align:center;
+}
+.down_divs  div:hover{
+background-color:#ff3366;
+}
+
+</style>
+
 <div class="image_div" ondragstart="return false"><div class="time" style=" text-align:center;"><p id="week" style="color:#ff3366;"></p></div><img id="imageview" src="http://www.dmoe.cc/random.php"><div id="down_div" class="down_divs" style="text-align:center;margin-top:20;"><button width="200" style="background-color:#FFF; " onclick="downImage()" onmouseover="DownMouseOverL(this);" onmouseout="DownMouseOutL(this);"> 下载</button></div></div>
 
 
@@ -742,34 +768,7 @@ btn.style.backgroundColor="#FFF";
 
 
 <body oncontextmenu="self.event.returnValue=false">
-<script>
 
-//禁用页面的ctrl功能，来禁止ctrl+s保存功能
-window.addEventListener('keydown', function (e) {
-    if(e.keyCode == 83 && (navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey)){
-        e.preventDefault();
-    }
-})
-
-document.onkeydown = function () {
-         //禁止 ctrl+u
-            if (event.ctrlKey && window.event.keyCode==85){
-                return false;
-            }
-
-    if (window.event && window.event.keyCode == 123) {
-                event.keyCode = 0;
-        event.returnValue = false;
-    }
-    if (window.event && window.event.keyCode == 13) {
-        window.event.keyCode = 505;
-    }
-    if (window.event && window.event.keyCode == 8) {
-        alert(str + "\n请使用Del键进行字符的删除操作！");
-        window.event.returnValue = false;
-    }
-}
-</script>
 
 
 
