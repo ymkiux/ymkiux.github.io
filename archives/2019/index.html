@@ -1591,59 +1591,20 @@ if ($('body').find('div.pdf').length) {
 
 
 
-<script>
-    //获取屏幕宽高
-    var windowWidth = window.screen.width;
-    var windowHeight = window.screen.height;
+<script type="text/javascript" src="http://www.lmlblog.com/blog/xue3/jquery-1.8.2.min.js"></script>
+	<script src="http://www.lmlblog.com/blog/xue3/jq.snow.js"></script>
+    <!--下面是调用方法和参数说明-->
+	<script>
+	$(function(){
+		$.fn.snow({ 
+			minSize: 5,		//雪花的最小尺寸
+			maxSize: 40, 	//雪花的最大尺寸
+			newOn: 100		//雪花出现的频率 这个数值越小雪花越多
+		});
+	});
+	</script>
 
-    //创建雪花
-    function createSnow(){
-        var left = 0;
-        var top = 0;
 
-        //定义一个初始化随机数,使雪花在屏幕中
-        var left_random = Math.random() * windowWidth;
-        var top_random = Math.random()* windowHeight;
-        var div = document.createElement('div');
-        div.className = 'snow';
-        div.style.transform = 'scale('+(Math.random())+')'
-
-        document.body.appendChild(div);
-
-        //雪花飘落
-        setInterval(function () {
-
-            div.style.left = left_random + left +'px';
-            div.style.top = top_random + top +'px'
-            left += 0.2;
-            top += 0.2;
-
-            //如果雪花跑到屏幕外面了,让雪花重新返回屏幕顶部
-            if(left_random + left >= windowWidth){
-                left_random = Math.random();
-                left = 0;
-            }
-
-            if(top_random + top >= windowHeight){
-                top_random = Math.random();
-                top = 0;
-            }
-        },10)
-
-    }
-    for(var i = 0 ; i < 200 ; i++){
-        createSnow()
-    }
-</script>
-<style>
-.snow{
-        background: white;
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-     }
-</style>
 
 
 
