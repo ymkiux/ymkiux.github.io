@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;;">
+  <meta name="description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;; }">
 <meta property="og:type" content="website">
 <meta property="og:title" content="随机图片">
 <meta property="og:url" content="http://yoursite.com/pictures/index.html">
 <meta property="og:site_name" content="次元居">
-<meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;;">
+<meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;; }">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.rrll.cc/tuceng/ecy.php">
-<meta property="og:updated_time" content="2020-10-06T15:53:34.365Z">
+<meta property="og:updated_time" content="2020-10-06T16:02:35.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机图片">
-<meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;;">
+<meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ setInterval(&quot;document.getElementById(&apos;week&apos;).innerHTML=new Date().toLocaleString();&quot;, 1000); document.getElementById(&apos;week&apos;).className=&quot;time&quot;; }">
 <meta name="twitter:image" content="https://www.rrll.cc/tuceng/ecy.php">
 
 
@@ -517,7 +517,10 @@ console.log("加载成功");
 window.onload = function name(){
 setInterval("document.getElementById('week').innerHTML=new Date().toLocaleString();", 1000);
 document.getElementById('week').className="time";
-
+}
+var windowWidth = window.screen.width;
+if(windowWidth>500){
+document.getElementById('down_div').style.display ="none";
 }
 
 //要提示的文字
