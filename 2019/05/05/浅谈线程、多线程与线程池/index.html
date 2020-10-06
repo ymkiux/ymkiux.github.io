@@ -1482,95 +1482,69 @@ if ($('body').find('div.pdf').length) {
 
 
 
+<script>
+ //获取屏幕宽高
+    var windowWidth = window.screen.width;
+    var windowHeight = window.screen.height;
 
+if(windowWidth>700px){
+ //创建雪花
+    function createSnow(){
+        var left = 0;
+        var top = 0;
 
+        //定义一个初始化随机数,使雪花在屏幕中
+        var left_random = Math.random() * windowWidth;
+        var top_random = Math.random()* windowHeight;
+        var div = document.createElement('div');
+        div.className = 'snow';
+        div.style.transform = 'scale('+(Math.random())+')'
 
+        document.body.appendChild(div);
 
- 
-	<style type="text/css">
-		*{margin:0;padding:0;}
-		canvas{background: url(images/snow.jpg) no-repeat;background-size: 100% 100%;overflow: hidden;}
-		
-	</style>
+        //雪花飘落
+        setInterval(function () {
 
-<body>
-	<canvas id="canvas"></canvas>
-	<script type="text/javascript">
-	/**
-	 * 定义<canvas>画布;
-	 * @type {[type]}
-	 */
-		var width=window.innerWidth;//获取系统显示宽度;
-		var height=window.innerHeight;//获取系统显示高度;
-		var canvas=document.querySelector("#canvas");
-		var context=canvas.getContext("2d");
-		var snowArray=[];//声明一个数组，用于存放创建出来的雪花对象；
- 
-		canvas.width=width;//设置画布的宽度为系统显示宽度;
-		canvas.height=height;//设置画布的高度为系统显示高度;
- 
-		cartoon();          //调用动画;
-		
-		/**
-		 * 定义雪花类;
-		 */
-		class Snowflake{
-			constructor(){
-				this.init();//构造函数，调用定义好的init()方法;
-			}
-			init(){
-				this.position={   //雪花对象的位置;
-					x:Math.random()*width,//x坐标随机;
-					y:Math.random()*height,//y坐标随机;
-				}
-				this.speed=Math.random()*10;//雪花下落速度为0-10以内的随机数;
-				this.r=Math.random()*6;//雪花的半径为0-6以内的随机数;
-				this.transparency=Math.random();//设置雪花的透明度为随机;
-				this.color={
-					r1:Math.random()*255,//雪花颜色随机;
-					g:Math.random()*255,
-					b:Math.random()*255,
-				}
-			}
-			draw(){//雪花绘制方法;
-				this.position.y++;//y坐标每次递增1像素;
-				this.transparency-=0.01;//透明度每次递减0.01;
-				if(this.transparency<=0){//透明度小于0，即雪花消失，重新绘制雪花;
-					this.init();
-				}
-				context.beginPath();//开始一个新的图形绘制;
-				context.fillStyle="rgba("+this.color.r1+","+this.color.g+","+this.color.b+","+this.transparency+")";//根据类模型绘制圆形雪花;
-				context.arc(this.position.x,this.position.y,this.r,0,Math.PI*2);//填充雪花的颜色;
-				context.fill();
-			}	
-		}
- 
-		for(var i=0;i<1000;i++){
-			var snow=new Snowflake();//实例化1000个雪花对象;
-			snowArray.push(snow);//将雪花对象添加到数组中;
-		}
-		// var length=snowArray.length;
- 
-		/**
-		 * 定义动画效果;
-		 * @return {[type]} [description]
-		 */
-		function cartoon(){
-			context.clearRect(0,0,width,height);//动画完成一次进行清屏操作;
-			for(var j=0;j<snowArray.length;j++){
-				snowArray[j].draw();//将实例化好的每个雪花对象在画布上画出来;
-			}
-			requestAnimationFrame(cartoon);//递归调用动画效果;
-		}
-	</script>
+            div.style.left = left_random + left +'px';
+            div.style.top = top_random + top +'px'
+            left += 0.2;
+            top += 0.2;
+
+            //如果雪花跑到屏幕外面了,让雪花重新返回屏幕顶部
+            if(left_random + left >= windowWidth){
+                left_random = Math.random();
+                left = 0;
+            }
+
+            if(top_random + top >= windowHeight){
+                top_random = Math.random();
+                top = 0;
+            }
+        },10)
+
+    }
+    for(var i = 0 ; i < 200 ; i++){
+        createSnow()
+    }
+}
+</script>
+<style>
+.snow{
+        background: white;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+     }
+</style>
 
 
 
 
 
 
-</body>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
 <!--崩溃欺骗-->
 <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
 
