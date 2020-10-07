@@ -843,17 +843,6 @@ document.onkeydown = function () {
     }
 }
 
-
-$.ajax({
-    type: "GET",
-    url: "static/cache.js",
-    dataType: "text",
-    beforeSend :function(xmlHttp){
-        xmlHttp.setRequestHeader("If-Modified-Since","0");
-        xmlHttp.setRequestHeader("Cache-Control","no-cache");
-    }
-}); 
-
 </script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
         
 
