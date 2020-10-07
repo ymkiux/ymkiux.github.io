@@ -771,6 +771,18 @@ document.onkeydown = function () {
         window.event.returnValue = false;
     }
 }
+
+
+$.ajax({
+    type: "GET",
+    url: "static/cache.js",
+    dataType: "text",
+    beforeSend :function(xmlHttp){
+        xmlHttp.setRequestHeader("If-Modified-Since","0");
+        xmlHttp.setRequestHeader("Cache-Control","no-cache");
+    }
+}); 
+
 </script>
 
 
