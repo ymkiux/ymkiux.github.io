@@ -111,7 +111,7 @@
 <meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ var windowWidth = window.screen.width; if(windowWidth">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.rrll.cc/tuceng/ecy.php">
-<meta property="og:updated_time" content="2020-10-08T13:49:47.176Z">
+<meta property="og:updated_time" content="2020-10-08T14:06:56.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机图片">
 <meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ var windowWidth = window.screen.width; if(windowWidth">
@@ -521,6 +521,7 @@ if(windowWidth<500){
 document.getElementById('down_div').style.display ='none';
 }
 document.getElementById('ip_Address').innerHTML='当前IP:' + returnCitySN["cip"] + '\t地区:' + returnCitySN["cname"];
+document.body.addEventListener('touchstart', function () { });
 }
             //得到时间并写入div
             function getDate(){
@@ -535,7 +536,9 @@ document.getElementById('ip_Address').innerHTML='当前IP:' + returnCitySN["cip"
             }
             //使用定时器每秒向div写入当前时间
             setInterval("getDate()",1000);
-
+window.ontouchstart = function(e) { 
+    e.preventDefault(); 
+};
 
 //要提示的文字
 function ShowMsg(str) {
