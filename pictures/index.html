@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ var windowWidth = window.screen.width; if(windowWidth">
+  <meta name="description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; }             //得到时间并写入div">
 <meta property="og:type" content="website">
 <meta property="og:title" content="随机图片">
 <meta property="og:url" content="http://yoursite.com/pictures/index.html">
 <meta property="og:site_name" content="次元居">
-<meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ var windowWidth = window.screen.width; if(windowWidth">
+<meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; }             //得到时间并写入div">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.rrll.cc/tuceng/ecy.php">
-<meta property="og:updated_time" content="2020-10-08T14:06:56.148Z">
+<meta property="og:updated_time" content="2020-10-08T14:11:25.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机图片">
-<meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ var windowWidth = window.screen.width; if(windowWidth">
+<meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; }             //得到时间并写入div">
 <meta name="twitter:image" content="https://www.rrll.cc/tuceng/ecy.php">
 
 
@@ -516,12 +516,7 @@
 <script type="text/javaScript">
 console.log("加载成功");
 window.onload = function name(){
-var windowWidth = window.screen.width;
-if(windowWidth<500){
-document.getElementById('down_div').style.display ='none';
-}
 document.getElementById('ip_Address').innerHTML='当前IP:' + returnCitySN["cip"] + '\t地区:' + returnCitySN["cname"];
-document.body.addEventListener('touchstart', function () { });
 }
             //得到时间并写入div
             function getDate(){
@@ -536,9 +531,12 @@ document.body.addEventListener('touchstart', function () { });
             }
             //使用定时器每秒向div写入当前时间
             setInterval("getDate()",1000);
-window.ontouchstart = function(e) { 
-    e.preventDefault(); 
-};
+$(document).ready(function() { 
+var windowWidth = window.screen.width;
+if(windowWidth<500){
+document.getElementById('down_div').style.display ='none';
+}
+});
 
 //要提示的文字
 function ShowMsg(str) {
