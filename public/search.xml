@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2020/10/09/CardView%E5%88%9D%E8%AF%86/"/>
+      <url>/2020/10/09/CardView%E5%88%9D%E8%AF%86/</url>
+      
+        <content type="html"><![CDATA[<p>CardView属性记录<a id="more"></a></p><h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><ul style="text-align: justify"><li style="list-style: circle">由于发现项目使用的CardView布局嵌套在Recycleview内使用 其底部阴影不显示 查找资料特此记录</li></ul><h5 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h5><p><span style="border:1px solid #ccc">只需添加两行代码即可</span></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app:cardElevation=&quot;2dp&quot;</span><br><span class="line">app:cardUseCompatPadding=&quot;true&quot;</span><br></pre></td></tr></table></figure><h5 id="备忘录"><a href="#备忘录" class="headerlink" title="备忘录"></a>备忘录</h5><p><span style="border:1px solid #ccc">关于各个属性介绍</span></p><table><thead><tr><th style="text-align:center">属性</th><th style="text-align:center">作用</th></tr></thead><tbody><tr><td style="text-align:center">android:cardCornerRadius</td><td style="text-align:center">在xml文件中设置card圆角的大小</td></tr><tr><td style="text-align:center">android:cardBackgroundColor</td><td style="text-align:center">在xml文件中设置card背景颜色</td></tr><tr><td style="text-align:center">android:elevation</td><td style="text-align:center">在xml文件中设置阴影的大小</td></tr><tr><td style="text-align:center">card_view:cardElevation</td><td style="text-align:center">在xml文件中设置阴影的大小</td></tr><tr><td style="text-align:center">card_view:cardMaxElevation</td><td style="text-align:center">在xml文件中设置阴影最大高度</td></tr><tr><td style="text-align:center">card_view:cardCornerRadius</td><td style="text-align:center">在xml文件中设置卡片的圆角大小</td></tr><tr><td style="text-align:center">card_view:contentPadding</td><td style="text-align:center">在xml文件中设置卡片内容于边距的间隔</td></tr><tr><td style="text-align:center">card_view:contentPaddingBottom</td><td style="text-align:center">在xml文件中设置卡片内容于下边距的间隔</td></tr><tr><td style="text-align:center">card_view:contentPaddingTop</td><td style="text-align:center">在xml文件中设置卡片内容于上边距的间隔</td></tr><tr><td style="text-align:center">card_view:contentPaddingLeft</td><td style="text-align:center">在xml文件中设置卡片内容于左边距的间隔</td></tr><tr><td style="text-align:center">card_view:contentPaddingRight</td><td style="text-align:center">在xml文件中设置卡片内容于右边距的间隔</td></tr><tr><td style="text-align:center">card_view:contentPaddingStart</td><td style="text-align:center">在xml文件中设置卡片内容于边距的间隔起始</td></tr><tr><td style="text-align:center">card_view:contentPaddingEnd</td><td style="text-align:center">在xml文件中设置卡片内容于边距的间隔终止</td></tr><tr><td style="text-align:center">card_view:cardUseCompatPadding</td><td style="text-align:center">在xml文件中设置内边距，V21+的版本和之前的版本仍旧具有一样的计算方式</td></tr><tr><td style="text-align:center">card_view:cardPreventConrerOverlap</td><td style="text-align:center">在xml文件中设置内边距，在V20和之前的版本中添加内边距，这个属性为了防止内容和边角的重叠</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android开发游记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Android实现自定义倒计时View</title>
       <link href="/2020/09/29/Android%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%80%92%E8%AE%A1%E6%97%B6View/"/>
       <url>/2020/09/29/Android%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%80%92%E8%AE%A1%E6%97%B6View/</url>
