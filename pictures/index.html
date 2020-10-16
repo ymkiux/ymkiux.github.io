@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="次元居">
 <meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; var windowWidth = window.scre">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-16T06:20:04.351Z">
+<meta property="og:updated_time" content="2020-10-16T12:57:16.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机图片">
 <meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; var windowWidth = window.scre">
@@ -545,6 +545,12 @@ $(".payment_time_mask").fadeToggle(1500);
 function downImage(){
 //window.open(document.getElementById('imageview').src);
 ShowMsg("暂未开放,耐心等待")
+}
+
+window.onload = choosePic;
+function choosePic() {
+    var myPix = Math.round(Math.random() * 1539);
+    document.getElementById("imageview").src = "https://github.com/ymkiux/ymkiux.github.io/tree/master/images/img/"+myPix+".png";
 }
 
 </script>
