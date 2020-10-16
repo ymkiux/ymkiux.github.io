@@ -103,19 +103,19 @@
 
 
 
-  <meta name="description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; }             //得到时间并写入div">
+  <meta name="description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; var windowWidth = window.scre">
 <meta property="og:type" content="website">
 <meta property="og:title" content="随机图片">
 <meta property="og:url" content="http://yoursite.com/pictures/index.html">
 <meta property="og:site_name" content="次元居">
-<meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; }             //得到时间并写入div">
+<meta property="og:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; var windowWidth = window.scre">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://www.rrll.cc/tuceng/ecy.php">
-<meta property="og:updated_time" content="2020-10-08T14:11:25.436Z">
+<meta property="og:image" content="https://img.xjh.me/random_img.php">
+<meta property="og:updated_time" content="2020-10-16T06:16:40.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机图片">
-<meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; }             //得到时间并写入div">
-<meta name="twitter:image" content="https://www.rrll.cc/tuceng/ecy.php">
+<meta name="twitter:description" content="console.log(&quot;加载成功&quot;); window.onload = function name(){ document.getElementById(&apos;ip_Address&apos;).innerHTML=&apos;当前IP:&apos; + returnCitySN[&quot;cip&quot;] + &apos;\t地区:&apos; + returnCitySN[&quot;cname&quot;]; var windowWidth = window.scre">
+<meta name="twitter:image" content="https://img.xjh.me/random_img.php">
 
 
 
@@ -517,6 +517,10 @@
 console.log("加载成功");
 window.onload = function name(){
 document.getElementById('ip_Address').innerHTML='当前IP:' + returnCitySN["cip"] + '\t地区:' + returnCitySN["cname"];
+var windowWidth = window.screen.width;
+if(windowWidth<500){
+document.getElementById('down_div').style.display ='none';
+}
 }
             //得到时间并写入div
             function getDate(){
@@ -531,12 +535,6 @@ document.getElementById('ip_Address').innerHTML='当前IP:' + returnCitySN["cip"
             }
             //使用定时器每秒向div写入当前时间
             setInterval("getDate()",1000);
-$(document).ready(function() { 
-var windowWidth = window.screen.width;
-if(windowWidth<500){
-document.getElementById('down_div').style.display ='none';
-}
-});
 
 //要提示的文字
 function ShowMsg(str) {
@@ -555,7 +553,7 @@ ShowMsg("暂未开放,耐心等待")
 
 <p><style type="text/css"><br>.image_div{<br>text-align:center;<br>pointer-events: none;<br>}<br>img{<br>vertical-align: middle;<br>}<br>.time{<br>text-align:center;<br>}</p>
 <p></style></p>
-<div class="image_div" ondragstart="return false"><div class="time" style=" text-align:center;"><p id="week" style="color:#ff3366;"></p></div><img id="imageview" src="https://www.rrll.cc/tuceng/ecy.php"><div id="down_div" style="text-align:center;margin-top:10px;"><a id="down_p" width="200" onclick="downImage()" style=" background-color: #FF4040;border: none;color: white;padding: 15px 32px;
+<div class="image_div" ondragstart="return false"><div class="time" style=" text-align:center;"><p id="week" style="color:#ff3366;"></p></div><img id="imageview" src="https://img.xjh.me/random_img.php"><div id="down_div" style="text-align:center;margin-top:10px;"><a id="down_p" width="200" onclick="downImage()" style=" background-color: #FF4040;border: none;color: white;padding: 15px 32px;
 text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 1px 1px;cursor: pointer;border-radius: 8px;"> 下载</a></div> <div style=" text-align:center;margin-top:5px;"><p id="ip_Address" style="color:#FF4040"></p></div></div>
 
 
@@ -768,36 +766,7 @@ text-align: center;text-decoration: none;display: inline-block;font-size: 16px;m
 </div>
 
 
-<body oncontextmenu="self.event.returnValue=false">
-<script>
 
-//禁用页面的ctrl功能，来禁止ctrl+s保存功能
-window.addEventListener('keydown', function (e) {
-    if(e.keyCode == 83 && (navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey)){
-        e.preventDefault();
-    }
-})
-
-document.onkeydown = function () {
-         //禁止 ctrl+u
-            if (event.ctrlKey && window.event.keyCode==85){
-                return false;
-            }
-
-    if (window.event && window.event.keyCode == 123) {
-                event.keyCode = 0;
-        event.returnValue = false;
-    }
-    if (window.event && window.event.keyCode == 13) {
-        window.event.keyCode = 505;
-    }
-    if (window.event && window.event.keyCode == 8) {
-        alert(str + "\n请使用Del键进行字符的删除操作！");
-        window.event.returnValue = false;
-    }
-}
-
-</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
         
 
 
