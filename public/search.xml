@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>AS项目导入aar包</title>
+      <link href="/2020/11/10/AS%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5aar%E5%8C%85/"/>
+      <url>/2020/11/10/AS%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5aar%E5%8C%85/</url>
+      
+        <content type="html"><![CDATA[<p>简单明了的解决导入aar包<a id="more"></a></p><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><ul><li>点击【File&gt;New&gt;New Module】</li><li>选择 【Import .JAR/.AAR Package</li><li>点击【Next】输入.arr文件所在路径并点击【finish】</li><li>点击【File&gt;Project Settings 】(或者使用快捷键[Ctrl+Shift+Alt+S]（适用于Windows）)</li><li>在左侧菜单【Modules】栏目下，选择需要依赖.aar包的module（通常为app）</li><li>点击Dependencies分页点击右上角绿色的【+】</li><li>选择【Module Dependency】选择你导入的ARR所在的【Module】工具类即可</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android开发游记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CardView初识</title>
       <link href="/2020/10/09/CardView%E5%88%9D%E8%AF%86/"/>
       <url>/2020/10/09/CardView%E5%88%9D%E8%AF%86/</url>
