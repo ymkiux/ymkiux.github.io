@@ -1773,7 +1773,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #77ffb5;
+  background: #18de6e;
 }
 .feed-link,
 .chat {
@@ -2779,7 +2779,7 @@ hr {
 }
 @media screen and (min-width: 1200px) {
   body {
-    background-image: url("/images/background.webp");
+    background: #fff;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
