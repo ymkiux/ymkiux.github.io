@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>封装AlertDialog自定义布局</title>
+      <link href="/2020/11/28/%E5%B0%81%E8%A3%85AlertDialog%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%83%E5%B1%80/"/>
+      <url>/2020/11/28/%E5%B0%81%E8%A3%85AlertDialog%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%83%E5%B1%80/</url>
+      
+        <content type="html"><![CDATA[<p>更轻松解决AlertDialog臃肿自定义实现<a id="more"></a></p><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p style="border:1px solid #ccc">封装其view方法 通过自定义接口提供给接口使用者进行其相关逻辑的操作 果然接口几乎是万金油的存在</p><h5 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">fun showAlertDialog(id: Int, confirmCallback: ConfirmCallback): View &#123;</span><br><span class="line">        var show: AlertDialog? = null</span><br><span class="line">        val customizeDialog: AlertDialog.Builder = AlertDialog.Builder(context)</span><br><span class="line">        customizeDialog.setCancelable(false)</span><br><span class="line">        val infoview: View = LayoutInflater.from(context).inflate(</span><br><span class="line">            id,</span><br><span class="line">            null, false</span><br><span class="line">        )</span><br><span class="line">        customizeDialog.setView(infoview)</span><br><span class="line">        customizeDialog.setPositiveButton(</span><br><span class="line">            &quot;确定&quot;</span><br><span class="line">        ) &#123; dialog, which -&gt;</span><br><span class="line">            confirmCallback.doWork()</span><br><span class="line">            show!!.dismiss()</span><br><span class="line">        &#125;</span><br><span class="line">        show = customizeDialog.show()</span><br><span class="line">        return infoview</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h5 id="普通使用"><a href="#普通使用" class="headerlink" title="普通使用"></a>普通使用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var id: EditText? = null</span><br><span class="line">val showCustomizeDialog = showAlertDialog(R.layout.iv_activity_user_shared_interface_activity_add_fragment,object : ConfirmCallback &#123;</span><br><span class="line">      override fun doWork() &#123;</span><br><span class="line"> if (id!!.text.isEmpty()) &#123;</span><br><span class="line">       Toast.makeText(this@MainActivity, &quot;内容为空&quot;,Toast.LENGTH_SHORT).show()</span><br><span class="line">       return</span><br><span class="line">     &#125;</span><br><span class="line"> Toast.makeText(this@MainActivity, &quot;测试成功&quot;, Toast.LENGTH_SHORT).show()</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;)</span><br><span class="line">id = showCustomizeDialog.findViewById&lt;EditText&gt;(R.id.edit_iv_activity_user_shared_interface_activity_add_fragment_id)</span><br></pre></td></tr></table></figure><h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><p>具体可访问<a href="https://github.com/ymkiux/tools/blob/master/library/src/main/java/com/github/tools/presenter/Tools.kt" target="_blank" rel="noopener">Github</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android开发游记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> V </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AS项目导入aar包</title>
       <link href="/2020/11/10/AS%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5aar%E5%8C%85/"/>
       <url>/2020/11/10/AS%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5aar%E5%8C%85/</url>
