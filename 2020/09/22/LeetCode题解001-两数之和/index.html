@@ -786,22 +786,6 @@ var loadCSS = function( href, before, media, attributes ){
         
       
         
-      
-        
-      
-        
-          <hr>
-        
-      
-        
-      
-        
-      
-        
-          <hr>
-        
-      
-        
           
     <li>
       <a class="vlts-menu fix-cursor-default" onclick="document.execCommand('print')">
@@ -809,12 +793,6 @@ var loadCSS = function( href, before, media, attributes ){
       </a>
     </li>
   
-        
-      
-        
-          <hr>
-        
-      
         
       
     </ul>
@@ -920,7 +898,7 @@ var loadCSS = function( href, before, media, attributes ){
       }
 
       // 有音乐播放器
-      if ('' == true && ('home,help,examples,contributors,hr,source_docs,source_theme,hr,print,hr,music'||[]).includes('music')) {
+      if ('' == true && ('navigation,home,print'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
