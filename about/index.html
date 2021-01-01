@@ -266,7 +266,9 @@
 
 
   
-  <center><div style="color:#c74f00; font-size='10px';">这里是Ymkiux</div></center><br><center><div id="images"></div></center>
+  <center><br><span class="p large red">这</span><span class="p large yellow">里</span><span class="p large green">是</span><span class="p large black">Y</span><span class="p large blue">m</span><span class="p large cyan">k</span><span class="p large gold">iux</span><br></center>
+
+<center><div id="images"></div></center>
 
 <style type="text/css">
 #images{
@@ -281,13 +283,7 @@
 }
 </style>
 
- <!-- #images{
-        border-radius:20px;
-        -moz-border-radius: 20px;
-        -webkit-border-radius: 20px;
-    } -->
-<!-- <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=0&id=2974007535&auto=1&height=430"></iframe> -->
-<p><center><pre id="aa"></pre></center></p>
+<p><center><pre id="aa" style="color:#c74f00"></pre></center></p>
 <p><div style="display:none" id="w">一个平平无奇的二次元编程爱好者</div></p>
 <script language="javascript">
     var index=0;
@@ -296,6 +292,12 @@
         document.getElementById("aa").innerText = word.substring(0,index++);
     }
     setInterval(type, 200);
+    window.onkeydown = window.onkeyup = window.onkeypress = function (event) { 
+        if(event.code == 'F12'){
+            window.event.returnValue = false; 
+            return false;
+        }  
+    }
 </script>
 
 
