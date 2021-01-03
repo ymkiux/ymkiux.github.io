@@ -266,7 +266,7 @@
 
 
   
-  <center><br><span class="p large red">这</span><span class="p large yellow">里</span><span class="p large green">是</span><span class="p large black">Y</span><span class="p large blue">m</span><span class="p large cyan">k</span><span class="p large gold">iux</span><br></center>
+  <center><br><span style="color:#fe5f58;" class="titleStyle">这</span><span style="color:#ffbd2b;" class="titleStyle">里</span><span style="color:#3dc550;" class="titleStyle">是</span><span style="color:#000000;" class="titleStyle">Y</span><span style="color:#2196f3;" class="titleStyle">m</span><span style="color:#FFE1FF;" class="titleStyle">k</span><span style="color:#99ffff;" class="titleStyle">i</span><span style="color:#EE0000;" class="titleStyle">u</span><span style="color:#FF3E96;" class="titleStyle">x</span><br></center>
 
 <center><div id="images"></div></center>
 
@@ -281,6 +281,9 @@
   margin:0 auto;
   margin-top:20px;
   background-position-y: 9%;
+}
+.titleStyle{
+    font-size: 2.5rem;line-height: 1.4;
 }
 </style>
 
@@ -299,6 +302,34 @@
             return false;
         }  
     }
+   var rotateval=0// 旋转角度
+            var Interval //定时器
+        window.onload=function(){
+            rotate()
+            document.getElementById('images').onmousemove=function(){
+                clearInterval(Interval)
+            }
+            document.getElementById('images').onmouseleave=function(){
+                rotate()
+            }
+            function rotate(){
+                Interval=setInterval(function(){
+                    var img=document.getElementById('images');
+                    rotateval+=1;
+                    img.style.transform='rotate('+rotateval+'deg)'
+                    img.style.transition = '0.1s linear'
+                },100)
+            }
+        }
+        //shortcut key
+        document.onkeydown = function(){
+    //ctrl+u
+    if (event.ctrlKey && window.event.keyCode==85) return false;
+    //ctrl+s
+    if (event.ctrlKey && window.event.keyCode==83)return false;
+    //ctrl+shift+i
+    if (event.ctrlKey && window.event.keyCode==73)return false;
+}
 </script>
 
 
@@ -451,13 +482,6 @@
         本站使用
         <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.2.0" target="_blank" class="codename">Volantis</a>
         作为主题
-      
-    
-      
-        <div class="copyright">
-        <p><a href="/">Copyright © 2017-2020</a></p>
-
-        </div>
       
     
   </footer>
