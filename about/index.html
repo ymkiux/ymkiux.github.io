@@ -316,7 +316,8 @@
 
 
   
-  <center><br><span style="color:#fe5f58;" class="titleStyle">这</span><span style="color:#ffbd2b;" class="titleStyle">里</span><span style="color:#3dc550;" class="titleStyle">是</span><span style="color:#000000;" class="titleStyle">Y</span><span style="color:#2196f3;" class="titleStyle">m</span><span style="color:#FFE1FF;" class="titleStyle">k</span><span style="color:#99ffff;" class="titleStyle">i</span><span style="color:#EE0000;" class="titleStyle">u</span><span style="color:#FF3E96;" class="titleStyle">x</span><br></center>
+  <p><body oncontextmenu="return false"><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body></p>
+<center><br><span style="color:#fe5f58;" class="titleStyle">这</span><span style="color:#ffbd2b;" class="titleStyle">里</span><span style="color:#3dc550;" class="titleStyle">是</span><span style="color:#000000;" class="titleStyle">Y</span><span style="color:#2196f3;" class="titleStyle">m</span><span style="color:#FFE1FF;" class="titleStyle">k</span><span style="color:#99ffff;" class="titleStyle">i</span><span style="color:#EE0000;" class="titleStyle">u</span><span style="color:#FF3E96;" class="titleStyle">x</span><br></center>
 
 <center><div id="images"></div></center>
 
@@ -326,6 +327,7 @@
   width: 215px;
   height: 215px;
   border-radius: 50%;
+  border: 1px solid rgb(118, 218, 255);
   background-size: 215px;
   background-repeat: no-repeat;
   margin:0 auto;
@@ -335,9 +337,23 @@
 .titleStyle{
     font-size: 2.5rem;line-height: 1.4;
 }
+.article pre {
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    overflow: auto;
+    background: #CCC;
+    font-size: 0.8125rem;
+    font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;
+    border: 1px solid #ff7f50;
+    padding: 16px;
+    border-radius: 4px;
+}
 </style>
 
-<p><center><pre id="aa" style="color:#c74f00"></pre></center></p>
+<p><center><pre id="aa" style="color:#fff"></pre></center></p>
 <p><div style="display:none" id="w">一个平平无奇的二次元编程爱好者</div></p>
 <script language="javascript">
     var index=0;
@@ -377,44 +393,36 @@
     if (event.ctrlKey && window.event.keyCode==85) return false;
     //ctrl+s
     if (event.ctrlKey && window.event.keyCode==83)return false;
-    //ctrl+shift+i
-    if (event.ctrlKey && window.event.keyCode==73)return false;
+    if(event.ctrlKey){
+          event.returnValue=false; 
+          ShowMsg("异常检测")    
+    }
+}
+function ShowMsg(str) {
+$(".payment_time_mask").remove();
+$("body").append("<div class=\"payment_time_mask\" style=\" background-color:#ccc; display:none; text-align: center;z-index: 999;width: 50%;position: fixed;left: 25%;top: 20%;border-radius: 10px;overflow: hidden;\"><span style='font-size: 18px;font-weight:bold;padding: 0.5em;display: block;'>" + str + "</span></div>");
+$(".payment_time_mask").fadeToggle(1500);//持续时间
+$(".payment_time_mask").fadeToggle(1500);
 }
 </script>
 
-
 <h4 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h4><ul style="text-align: justify"><li style="list-style: circle">基于<code>Hexo</code>框架托管于<code>github</code>，使用<code>Volantis</code>主题稍作修改建成</li></ul>
 
-<h4 id="建站历程"><a href="#建站历程" class="headerlink" title="建站历程"></a>建站历程</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">时间</th>
-<th style="text-align:center">进度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">2019.01.23</td>
-<td style="text-align:center">以<code>Hexo</code>+<code>github</code>发布静态博客，使用<code>NexT</code>主题</td>
-</tr>
-<tr>
-<td style="text-align:center">2019.04.15</td>
-<td style="text-align:center">添加<code>live2d看板娘</code>，经过许些修改优化</td>
-</tr>
-<tr>
-<td style="text-align:center">2020.01.18</td>
-<td style="text-align:center">优化实现<code>毛玻璃</code>背景效果</td>
-</tr>
-<tr>
-<td style="text-align:center">2020.12.24</td>
-<td style="text-align:center">被<code>Volantis</code>主题吸引，切换至其主题并对相应内容作出轻微修改</td>
-</tr>
-<tr>
-<td style="text-align:center">未完待续</td>
-<td style="text-align:center">待更</td>
-</tr>
-</tbody>
-</table>
+<h4 id="建站历程"><a href="#建站历程" class="headerlink" title="建站历程"></a>建站历程</h4><div class="timeline">
+<!-- <div class="timenode"><div class="meta"><p><p>2021.01.05</p>
+</p></div><div class="body"><p>1.去除臃肿代码</p></div></div> -->
+
+<div class="timenode"><div class="meta"><p></p><p>2020.12.24</p>
+<p></p></div><div class="body"><p>1.从<code>NexT</code>切换至<code>Volantis</code>主题<br>2.对相应内容作出轻微修改</p></div></div>
+
+<div class="timenode"><div class="meta"><p></p><p>2020.01.18</p>
+<p></p></div><div class="body"><p>优化实现<code>毛玻璃</code>背景效果</p></div></div>
+
+<div class="timenode"><div class="meta"><p></p><p>2019.04.15</p>
+<p></p></div><div class="body"><p>添加<code>live2d看板娘</code>，经过许些修改优化</p></div></div>
+
+<div class="timenode"><div class="meta"><p></p><p>2019.01.23</p>
+<p></p></div><div class="body"><p>以<code>Hexo</code>+<code>github</code>发布静态博客，使用<code>NexT</code>主题</p></div></div></div>
 <h4 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h4><ul style="text-align: justify"><li style="list-style: circle">QQ：<code>3255284101</code> </li><li style="list-style: circle">Email：<code><a href="mailto:shenchuanyinfu@gmail.com" target="_blank" rel="noopener">shenchuanyinfu@gmail.com</a> </code></li></ul>
   
   
