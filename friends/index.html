@@ -413,7 +413,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
           
         </a>
       
@@ -425,7 +425,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
           
         </a>
       
@@ -437,7 +437,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
           
         </a>
       
@@ -445,7 +445,7 @@
       
         
         <div class='hoverbox'>
-          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,666"></a>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png"></a>
           <div class='target'>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAAC/0lEQVR42u3aS27DMAwFQN//0u2+aGD+lJjIaNfWtcTx5oHU9WP9uy4EYMCAAQMGzBqYq7huNwg+//fvr/4veo5uPWDAgAEDBgyYfTDhAFQ8UBTu7vnq+cIfBgwYMGDAgAGzFuY2ABUDWTWoTQfG23rAgAEDBgwYMF8PUw1s3d+DAQMGDBgwYMBMBbzsICxb+NrkCwYMGDBgwIAZh0kPqIYHcNXg9rhJJBgwYMCAAQPmbTDZ1S3o9M/lesCAAQMGDBgwa2C6Kxrguo2lbpALnwcMGDBgwIABswZmejCWHXhNDda65wcDBgwYMGDA7IWJFlaFmC6k+4HKAzcwYMCAAQMGzGNguhd1qsDTwS87EHz5HjBgwIABAwbMepjoi7Iw2QNnG1bdDwIGDBgwYMCA2QPTbQSlNy4WXt0n3bgCAwYMGDBgwKyDqQas8MXiZgMp+94sOBgwYMCAAQNmL0x34+ngNdWIiu4LBgwYMGDAgNkHky24G+yqwfFUQwsMGDBgwIABsxfmGlpd6ChgNdCFAywYMGDAgAEDZh1MduNqY2u68dS+KAQGDBgwYMCAWQuTHkgNQ003trKg6Q4eGDBgwIABA+YxMFMDsehFn+rqNsrCwREMGDBgwIABswamO3irAlcHdccDKRgwYMCAAQNmDcxUgdVBVzeoTTfAwIABAwYMGDD7YU41sMIHLO5fHQSCAQMGDBgwYPbDdAs6HRy7YO1JJBgwYMCAAQPmsTDTEFONqKnB4NsbVWDAgAEDBgyYYzDdVT1AttBqYyr7wcCAAQMGDBgwe2CmAlP0AHcXf7If4u496QALBgwYMGDAgFkHkw103cZVtdBqsAw/DwYMGDBgwIBZC1MNUN3BWTfQTQVKMGDAgAEDBsz3wWSDYLaBVA1u6XrAgAEDBgwYMF8HU20wVYNgNTh+rFEFBgwYMGDAgDkOkx24ZQ+UDXLdgj82iQQDBgwYMGDAvA1manCVHYh1LyCVg1x04AYGDBgwYMCAeSyMBQYMGDBgwIBZtn4BcBvn4bBa0c4AAAAASUVORK5CYII=">
           </div>
@@ -459,7 +459,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" srcset="data:image/png;base64,666">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png">
           
         </a>
       
@@ -1259,6 +1259,9 @@ function setSearchService() {
           console.error(err);
         })
 
+
+
+
       // 请求文章的浏览数，如果是当前页面就自增
       var allPV = document.querySelectorAll('#lc-pv');
       if (allPV.length > 0 || enableIncr) {
@@ -1339,6 +1342,15 @@ function setSearchService() {
     LCCounter.refreshCounter();
   });
 </script>
+
+<!-- 作为覆盖生成的样式 -->
+<style>
+  .article blockquote {
+    background: var(--color-block);
+    border-left: 4px solid #ffffff;
+    border-radius: 4px;
+}
+</style>
 
 
 

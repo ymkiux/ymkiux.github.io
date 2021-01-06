@@ -1485,6 +1485,9 @@ function setSearchService() {
           console.error(err);
         })
 
+
+
+
       // 请求文章的浏览数，如果是当前页面就自增
       var allPV = document.querySelectorAll('#lc-pv');
       if (allPV.length > 0 || enableIncr) {
@@ -1565,6 +1568,15 @@ function setSearchService() {
     LCCounter.refreshCounter();
   });
 </script>
+
+<!-- 作为覆盖生成的样式 -->
+<style>
+  .article blockquote {
+    background: var(--color-block);
+    border-left: 4px solid #ffffff;
+    border-radius: 4px;
+}
+</style>
 
 
 

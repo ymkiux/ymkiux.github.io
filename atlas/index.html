@@ -470,7 +470,7 @@ window.onload = window.onscroll = function () { //onscroll()在滚动条滚动�
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
           
         </a>
       
@@ -482,7 +482,7 @@ window.onload = window.onscroll = function () { //onscroll()在滚动条滚动�
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
           
         </a>
       
@@ -494,7 +494,7 @@ window.onload = window.onscroll = function () { //onscroll()在滚动条滚动�
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
           
         </a>
       
@@ -502,7 +502,7 @@ window.onload = window.onscroll = function () { //onscroll()在滚动条滚动�
       
         
         <div class='hoverbox'>
-          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,666"></a>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png"></a>
           <div class='target'>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAAD4CAAAAADkunTXAAACQ0lEQVR42u3aQZLCMAwEwPz/07svoJBGTgFK+xYqCW5zGSRdfw9dFzg4ODg4+CL4Fa6XL35xX/e5d+9J9wsODg4ODr4RXg4AxfurG+6+f7pfcHBwcHDwzfBqgKhep4Du95fvBwcHBwcHBx8XGNLCBTg4ODg4OPh5eNqISO8HBwcHBwcHP1CgPzwIcKqhAQ4ODg4O/iR4PDD3oetjA37g4ODg4OA/DJ+u7sG8Cz5pUCnvFxwcHBwcfBE8DQhVSDcIpQWM8vPg4ODg4OCL4GlhPg0i04NuQ6eFCHBwcHBw8B+Adxv+p4NKtyDRHSgABwcHBwffDO9uoHudbrwKKx8kODg4ODj4Qvi0oJ8WGtIAE+8fHBwcHBx8IXz6R/90w+FjnRRwcHBwcPAfhqdfdCpoVA8wHhAEBwcHBwdfCE8H7aYFh2lAagcqcHBwcHDwxfBTDYRpALpt0AAcHBwcHHwR/FSgSAsE3QMf/xDg4ODg4OAPhncH9LqBaPr8bQEGHBwcHBx8AbxdwB9+Xg0u7YYCODg4ODj4Qni30JACTxckygEHHBwcHBx8EXy60sZ/ChsfDDg4ODg4+CL4Fa5TB1Q9kG6hotxQAAcHBwcHXwBPGwfdjaUNhG4BAxwcHBwc/Inw7gBdWvD/uk4KODg4ODj4g+Fp479agDhV6AAHBwcHBwfvFx7SgHMN1+2FCHBwcHBw8C+C3xVEpsGk+v63z4GDg4ODgy+Ep8EgbeTf3XgoDwaAg4ODg4P/MPxpCxwcHBwcfMH6B6qxgcwWmiZsAAAAAElFTkSuQmCC">
           </div>
@@ -516,7 +516,7 @@ window.onload = window.onscroll = function () { //onscroll()在滚动条滚动�
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" srcset="data:image/png;base64,666">
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png">
           
         </a>
       
@@ -1289,6 +1289,9 @@ function setSearchService() {
           console.error(err);
         })
 
+
+
+
       // 请求文章的浏览数，如果是当前页面就自增
       var allPV = document.querySelectorAll('#lc-pv');
       if (allPV.length > 0 || enableIncr) {
@@ -1369,6 +1372,15 @@ function setSearchService() {
     LCCounter.refreshCounter();
   });
 </script>
+
+<!-- 作为覆盖生成的样式 -->
+<style>
+  .article blockquote {
+    background: var(--color-block);
+    border-left: 4px solid #ffffff;
+    border-radius: 4px;
+}
+</style>
 
 
 
