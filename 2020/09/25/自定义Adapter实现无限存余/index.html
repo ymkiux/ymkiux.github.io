@@ -481,6 +481,14 @@
       
     
       
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,666"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADpklEQVR42u3aQXLbQAwEQP3/08k9KReBAWSh7MaNLnLJbeowBvj6o6J6IQAHDhw4BQ7cEbhXWP9eX13vvwcJ139a58uNT/cLDhw4cODAgQN3DK4cAJsAU9gucPVFpfsFBw4cOHDgwIG7CrcVSKvQ3WCaQq7tFxw4cODAgQMH7ofAdQPmFLJ6fjnQggMHDhw4cODA/XK4blBOG5jdBic4cODAgQMHDtxvgWsPaJuD4K3G4xbcxyb54MCBAwcOHDhwS3DdmgbfTx/H+wUHDhw4cODAgTsCt1VbDc80MKeN0vY+wYEDBw4cOHDgjsBVN9IdEHcboOkLSteLB+vgwIEDBw4cOHBH4bYCZNr47F6/FZjL64ADBw4cOHDgwB2D637oNwWdAnWh48ALDhw4cODAgQN3FG6rEbgdVLuN1af1p/cBBw4cOHDgwIG7DldtTFah0xfybti48QoOHDhw4MCBA3cULv0w8O0f9DWD7dage/yfAzhw4MCBAwcO3DfBdYNsN4CmwTq979YHheDAgQMHDhw4cNfgpg++HUTThmjaWG1/2AgOHDhw4MCBA3cMbtpATIPquwfU1ecsN1zBgQMHDhw4cOCOwE0fsBqAt4Np+kLS5wEHDhw4cODAgbsK1x1AT4PmuwbKU8DHY3DgwIEDBw4cuKNw3YD47gF13HAcNkC/vB84cODAgQMHDtwRuG7A3AZJg/PW9e1BNjhw4MCBAwcO3BG4dCPTgfRWwN4O1ONJPjhw4MCBAwcO3DfDbQfaakM0harWerAGBw4cOHDgwIE7Bjcd/HYD5vT87QZsPMkHBw4cOHDgwIH7MFwKtR2k1wbHIczjDwMcOHDgwIEDB+443Fbw7Q6uU9jpuuV9ggMHDhw4cODAHYHbHhx3G47dwfL0A8f0+cCBAwcOHDhw4K7BbTUkuwE53fC7B9eP+wIHDhw4cODAgTsClwbQNDhP19s6Pw7O4MCBAwcOHDhwR+CmVR0YpwPlNDB3YcuNW3DgwIEDBw4cuCNwr7Cmg+fq36eNyu7x4w8FHDhw4MCBAwfuGNw08KYBOQ3GZwIwOHDgwIEDBw7cEbhuoNwOpCn8a1jl+4IDBw4cOHDgwP1wuGmArq5XvS4N4uDAgQMHDhw4cD8VLj2vG0DT87eeGxw4cODAgQMH7jrcuwbS6QC6W9NB9uP64MCBAwcOHDhwx+DSAW468J0G13RgnTZUwYEDBw4cOHDgrsGpZsBGAA4cOHAKHLjP1l9pSHzTgP6NCwAAAABJRU5ErkJggg==">
+          </div>
+        </div>
+      
     
       
         <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
@@ -626,11 +634,6 @@
       
     
       
-        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
-</div>
-      
-    
-      
         
           <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
 </div>
@@ -641,6 +644,13 @@
         本站使用
         <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.2.0" target="_blank" class="codename">Volantis</a>
         作为主题
+      
+    
+      
+        
+          <div><p id="lc-hitokoto">获取中…</p>
+</div>
+        
       
     
   </footer>
@@ -1176,9 +1186,9 @@ function setSearchService() {
     // 查询存储的记录
     getRecord(Counter, url, title) {
       return new Promise(function (resolve, reject) {
-        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
           .then(resp => resp.json())
-          .then(({results, code, error}) => {
+          .then(({ results, code, error }) => {
             if (code === 401) {
               throw error;
             }
@@ -1186,7 +1196,7 @@ function setSearchService() {
               var record = results[0];
               resolve(record);
             } else {
-              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+              Counter('post', '/classes/Counter', { url, title: title, times: 0 })
                 .then(resp => resp.json())
                 .then((record, error) => {
                   if (error) {
@@ -1194,14 +1204,14 @@ function setSearchService() {
                   }
                   resolve(record);
                 }).catch(error => {
-                console.error('Failed to create', error);
-                reject(error);
-              });
+                  console.error('Failed to create', error);
+                  reject(error);
+                });
             }
           }).catch((error) => {
-          console.error('LeanCloud Counter Error:', error);
-          reject(error);
-        });
+            console.error('LeanCloud Counter Error:', error);
+            reject(error);
+          });
       })
     },
 
@@ -1227,7 +1237,7 @@ function setSearchService() {
     buildIncrement(objectId) {
       return {
         "method": "PUT",
-        "path": `/1.1/classes/Counter/${ objectId }`,
+        "path": `/1.1/classes/Counter/${objectId}`,
         "body": {
           "times": {
             '__op': 'Increment',
@@ -1263,7 +1273,7 @@ function setSearchService() {
           incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-sv #number');
           if (eles.length > 0) {
-            eles.forEach((el,index,array)=>{
+            eles.forEach((el, index, array) => {
               el.innerText = record.times + 1;
               if (pvCtn) {
                 pvCtn.style.display = 'inline';
@@ -1282,7 +1292,7 @@ function setSearchService() {
           vuv && incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-uv #number');
           if (eles.length > 0) {
-            eles.forEach((el,index,array)=>{
+            eles.forEach((el, index, array) => {
               el.innerText = record.times + (vuv ? 1 : 0);
               if (uvCtn) {
                 uvCtn.style.display = 'inline';
@@ -1292,6 +1302,20 @@ function setSearchService() {
         });
         getterArr.push(uvGetter);
       }
+
+
+      //一言
+      fetch('https://v1.hitokoto.cn')
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (data) {
+          var hitokoto = document.getElementById('lc-hitokoto');
+          hitokoto.innerText = data.hitokoto;
+        })
+        .catch(function (err) {
+          console.error(err);
+        })
 
       // 请求文章的浏览数，如果是当前页面就自增
       var allPV = document.querySelectorAll('#lc-pv');
@@ -1339,7 +1363,7 @@ function setSearchService() {
 
     fetchData(api_server) {
       var Counter = (method, url, data) => {
-        return fetch(`${ api_server }/1.1${ url }`, {
+        return fetch(`${api_server}/1.1${url}`, {
           method,
           headers: {
             'X-LC-Id': this.app_id,
@@ -1353,13 +1377,13 @@ function setSearchService() {
     },
 
     refreshCounter() {
-      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${this.app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
       if (api_server) {
         this.fetchData(api_server);
       } else {
         fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
           .then(resp => resp.json())
-          .then(({api_server}) => {
+          .then(({ api_server }) => {
             this.fetchData('https://' + api_server);
           });
       }
@@ -1373,7 +1397,6 @@ function setSearchService() {
     LCCounter.refreshCounter();
   });
 </script>
-
 
 
 
