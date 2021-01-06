@@ -419,23 +419,6 @@
                 },100)
             }
         }
-        //shortcut key
-        document.onkeydown = function(){
-    //ctrl+u
-    if (event.ctrlKey && window.event.keyCode==85) return false;
-    //ctrl+s
-    if (event.ctrlKey && window.event.keyCode==83)return false;
-    if(event.ctrlKey){
-          event.returnValue=false; 
-          ShowMsg("异常检测")    
-    }
-}
-function ShowMsg(str) {
-$(".payment_time_mask").remove();
-$("body").append("<div class=\"payment_time_mask\" style=\" background-color:#ccc; display:none; text-align: center;z-index: 999;width: 50%;position: fixed;left: 25%;top: 20%;border-radius: 10px;overflow: hidden;\"><span style='font-size: 18px;font-weight:bold;padding: 0.5em;display: block;'>" + str + "</span></div>");
-$(".payment_time_mask").fadeToggle(1500);//持续时间
-$(".payment_time_mask").fadeToggle(1500);
-}
 </script>
 
 <h4 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h4><ul style="text-align: justify"><li style="list-style: circle">基于<code>Hexo</code>框架托管于<code>github</code>，使用<code>Volantis</code>主题稍作修改建成</li></ul>
@@ -444,8 +427,11 @@ $(".payment_time_mask").fadeToggle(1500);
 <!-- <div class="timenode"><div class="meta"><p><p>2021.01.05</p>
 </p></div><div class="body"><p>1.去除臃肿代码</p></div></div> -->
 
+<div class="timenode"><div class="meta"><p></p><p>2021.01.05</p>
+<p></p></div><div class="body"><p>去除臃肿代码<br>添加个人<code>追番</code>列表</p></div></div>
+
 <div class="timenode"><div class="meta"><p></p><p>2020.12.24</p>
-<p></p></div><div class="body"><p>1.从<code>NexT</code>切换至<code>Volantis</code>主题<br>2.对相应内容作出轻微修改</p></div></div>
+<p></p></div><div class="body"><p>从<code>NexT</code>切换至<code>Volantis</code>主题<br>对相应内容作出轻微修改</p></div></div>
 
 <div class="timenode"><div class="meta"><p></p><p>2020.01.18</p>
 <p></p></div><div class="body"><p>优化实现<code>毛玻璃</code>背景效果</p></div></div>
@@ -571,7 +557,7 @@ $(".payment_time_mask").fadeToggle(1500);
     
       
         
-          <div><p id="lc-hitokoto">获取中…</p>
+          <div><p><p id="lc-hitokoto">获取中…</p> <body onContextMenu="return false"></p>
 </div>
         
       
@@ -1322,6 +1308,26 @@ function setSearchService() {
   document.addEventListener('pjax:complete', function () {
     LCCounter.refreshCounter();
   });
+
+
+
+  document.onkeydown = function () {
+    //ctrl+u
+    if (event.ctrlKey && window.event.keyCode == 85) return false;
+    //ctrl+s
+    if (event.ctrlKey && window.event.keyCode == 83) return false;
+    if (event.ctrlKey) {
+      event.returnValue = false;
+      ShowMsg("异常检测")
+    }
+  }
+  function ShowMsg(str) {
+    $(".payment_time_mask").remove();
+    $("body").append("<div class=\"payment_time_mask\" style=\" background-color:#ccc; display:none; text-align: center;z-index: 999;width: 50%;position: fixed;left: 25%;top: 20%;border-radius: 10px;overflow: hidden;\"><span style='font-size: 18px;font-weight:bold;padding: 0.5em;display: block;'>" + str + "</span></div>");
+    $(".payment_time_mask").fadeToggle(1500);//持续时间
+    $(".payment_time_mask").fadeToggle(1500);
+  }
+
 </script>
 
 <!-- 作为覆盖生成的样式 -->
@@ -1330,7 +1336,7 @@ function setSearchService() {
     background: var(--color-block);
     border-left: 4px solid #ffffff;
     border-radius: 4px;
-}
+  }
 </style>
 
 

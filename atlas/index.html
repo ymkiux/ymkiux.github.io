@@ -620,7 +620,7 @@ window.onload = window.onscroll = function () { //onscroll()在滚动条滚动�
     
       
         
-          <div><p id="lc-hitokoto">获取中…</p>
+          <div><p><p id="lc-hitokoto">获取中…</p> <body onContextMenu="return false"></p>
 </div>
         
       
@@ -1371,6 +1371,26 @@ function setSearchService() {
   document.addEventListener('pjax:complete', function () {
     LCCounter.refreshCounter();
   });
+
+
+
+  document.onkeydown = function () {
+    //ctrl+u
+    if (event.ctrlKey && window.event.keyCode == 85) return false;
+    //ctrl+s
+    if (event.ctrlKey && window.event.keyCode == 83) return false;
+    if (event.ctrlKey) {
+      event.returnValue = false;
+      ShowMsg("异常检测")
+    }
+  }
+  function ShowMsg(str) {
+    $(".payment_time_mask").remove();
+    $("body").append("<div class=\"payment_time_mask\" style=\" background-color:#ccc; display:none; text-align: center;z-index: 999;width: 50%;position: fixed;left: 25%;top: 20%;border-radius: 10px;overflow: hidden;\"><span style='font-size: 18px;font-weight:bold;padding: 0.5em;display: block;'>" + str + "</span></div>");
+    $(".payment_time_mask").fadeToggle(1500);//持续时间
+    $(".payment_time_mask").fadeToggle(1500);
+  }
+
 </script>
 
 <!-- 作为覆盖生成的样式 -->
@@ -1379,7 +1399,7 @@ function setSearchService() {
     background: var(--color-block);
     border-left: 4px solid #ffffff;
     border-radius: 4px;
-}
+  }
 </style>
 
 
