@@ -470,6 +470,9 @@
       <div class='text'>
         
         
+          <p>Ymkiux</p>
+
+        
         
           <p><span id="jinrishici-sentence">次元居</span></p>
           <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
@@ -605,13 +608,16 @@
 
 <section class="widget text shadow desktop mobile">
   
+  <header>
+    
+      <i class="fas fa-image fa-fw" aria-hidden="true"></i><span class='name'>Pixiv日榜Top50</span>
+    
+  </header>
+
 
   <div class='content'>
     
-      <p>Pixiv日榜Top50</p>
-
-    
-      <object id:"lc-pivot" style="border:0px;" type="text/x-scriptlet" data="https://api.jysafe.cn/pixiv/?color=fff&limit=50" width=100%></object>
+      <object id="lc_pivot" style="border:0px;"  data="https://api.jysafe.cn/pixiv/?color=fff&limit=50" width=100%></object>
     
   </div>
 </section>
@@ -1459,10 +1465,17 @@ function setSearchService() {
 
 <!-- 作为覆盖生成的样式 -->
 <style>
+  /* 追番页 */
   .article blockquote {
     background: var(--color-block);
     border-left: 4px solid #ffffff;
     border-radius: 4px;
+  }
+
+  #lc_pivot {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
   }
 </style>
 
