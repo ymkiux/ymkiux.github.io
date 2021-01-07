@@ -1439,6 +1439,18 @@ function setSearchService() {
     })
 
 
+  //网易云随机热评
+  fetch('https://api.uomg.com/api/comments.163?format=json')
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      var hotComments = document.getElementById('lc-hotComments');
+      hotComments.innerText = data.data.content;
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
 
   document.onkeydown = function () {
     //ctrl+u
@@ -1468,12 +1480,6 @@ function setSearchService() {
     background: var(--color-block);
     border-left: 4px solid #ffffff;
     border-radius: 4px;
-  }
-
-  #lc_pivot {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
   }
 </style>
 
