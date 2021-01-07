@@ -1351,22 +1351,6 @@ function setSearchService() {
       }
 
 
-      //一言
-      fetch('https://v1.hitokoto.cn')
-        .then(function (res) {
-          return res.json();
-        })
-        .then(function (data) {
-          var hitokoto = document.getElementById('lc-hitokoto');
-          hitokoto.innerText = data.hitokoto;
-        })
-        .catch(function (err) {
-          console.error(err);
-        })
-
-
-
-
       // 请求文章的浏览数，如果是当前页面就自增
       var allPV = document.querySelectorAll('#lc-pv');
       if (allPV.length > 0 || enableIncr) {
@@ -1447,6 +1431,19 @@ function setSearchService() {
     LCCounter.refreshCounter();
   });
 
+  //一言
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('lc-hitokoto');
+      hitokoto.innerText = data.hitokoto;
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+
 
 
   document.onkeydown = function () {
@@ -1465,6 +1462,8 @@ function setSearchService() {
     $(".payment_time_mask").fadeToggle(1500);//持续时间
     $(".payment_time_mask").fadeToggle(1500);
   }
+
+
 
 </script>
 
