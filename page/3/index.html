@@ -969,6 +969,28 @@
   
   <header>
     
+      <i class="fa-fw fa fa-music fa-fw" aria-hidden="true"></i><span class='name'>网易云随机热评</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <div id="lc-hotComments"><center>暂未获取到数据</center></div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget text shadow desktop mobile">
+  
+  <header>
+    
       <i class="fas fa-image fa-fw" aria-hidden="true"></i><span class='name'>Pixiv日榜Top50</span>
     
   </header>
@@ -1044,8 +1066,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Thu Jan 07 2021 15:14:53 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2021-01-07 日</div>
+            <div id="last-update" style="display: none;">Fri Jan 08 2021 00:46:09 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2021-01-08 日</div>
           
         </div>
         
@@ -1095,7 +1117,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-01-07 日';
+            document.getElementById('last-update-show').innerHTML = '2021-01-08 日';
           }
         </script>
         
@@ -1160,13 +1182,6 @@
       
     
       
-        
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
-</div>
-        
-      
-    
-      
         本站使用
         <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.2.0" target="_blank" class="codename">Volantis</a>
         作为主题
@@ -1174,7 +1189,7 @@
     
       
         
-          <div><p><p id="lc-hitokoto">获取中…</p> <body onContextMenu="return false"></p>
+          <div><p id="lc-hitokoto">获取中…</p>
 </div>
         
       
@@ -1955,18 +1970,7 @@ function setSearchService() {
   }
 
 
-
 </script>
-
-<!-- 作为覆盖生成的样式 -->
-<style>
-  /* 追番页 */
-  .article blockquote {
-    background: var(--color-block);
-    border-left: 4px solid #ffffff;
-    border-radius: 4px;
-  }
-</style>
 
 
 
