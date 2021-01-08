@@ -423,9 +423,12 @@
 
 <h4 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h4><ul style="text-align: justify"><li style="list-style: circle">基于<code>Hexo</code>框架托管于<code>github</code>，使用<code>Volantis</code>主题稍作修改建成</li></ul>
 
-<h4 id="建站历程"><a href="#建站历程" class="headerlink" title="建站历程"></a>建站历程</h4><div class="timeline">
-<!-- <div class="timenode"><div class="meta"><p><p>2021.01.05</p>
-</p></div><div class="body"><p>1.去除臃肿代码</p></div></div> -->
+<h4 id="建站历程"><a href="#建站历程" class="headerlink" title="建站历程"></a>建站历程</h4><div class="timeline"><!-- 
+<div class="timenode"><div class="meta"><p><p>2021.01.08</p>
+</p></div><div class="body"></div></div> -->
+
+<div class="timenode"><div class="meta"><p></p><p>2021.01.08</p>
+<p></p></div><div class="body"><p>修改<code>hexo-bilibili-bangumi</code>插件源码</p></div></div>
 
 <div class="timenode"><div class="meta"><p></p><p>2021.01.05</p>
 <p></p></div><div class="body"><p>去除臃肿代码<br>添加个人<code>追番</code>列表</p></div></div>
@@ -1287,41 +1290,32 @@ function setSearchService() {
   });
 
   //一言
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
+  fetch('https://v1.hitokoto.cn').then(response => response.json())
+    .then(data => {
       var hitokoto = document.getElementById('lc-hitokoto');
       hitokoto.innerText = data.hitokoto;
     })
-    .catch(function (err) {
-      console.error(err);
-    })
+    .catch(e => console.error(e))
 
 
   //网易云随机热评
-  fetch('https://api.uomg.com/api/comments.163?format=json')
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
+  fetch('https://api.uomg.com/api/comments.163?format=json').then(response => response.json())
+    .then(data => {
       var hotComments = document.getElementById('lc-hotComments');
       hotComments.innerText = data.data.content;
     })
-    .catch(function (err) {
-      console.error(err);
-    })
+    .catch(e => console.error(e))
+
 
   document.onkeydown = function () {
     //ctrl+u
     if (event.ctrlKey && window.event.keyCode == 85) return false;
     //ctrl+s
     if (event.ctrlKey && window.event.keyCode == 83) return false;
-    if (event.ctrlKey) {
-      event.returnValue = false;
-      ShowMsg("异常检测")
-    }
+    // if (event.ctrlKey) {
+    //   event.returnValue = false;
+    //   ShowMsg("异常检测")
+    // }
   }
   function ShowMsg(str) {
     $(".payment_time_mask").remove();

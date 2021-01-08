@@ -568,14 +568,10 @@ b...</p>
         </a>
       
       
-        <a class='next' href='/2020/09/09/IDEA中配置MySQL连接异常/'>
-          <p class='title'>IDEA中配置MySQL连接异常<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>解决Server returns invalid timezone
-原因
- MySQL驱动jar中的默认时区是UTC
-
-解决方法时区法
-一    url最后添加?serverTimezone=G...</p>
+        <a class='next' href='/2020/09/09/Spingboot初遇web项目BUG/'>
+          <p class='title'>Spingboot初遇web项目BUG<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Spingweb demo初运行BUG
+警告警告一1OpenJDK 64-Bit Server VM warning: Options -Xverify:none and -noverify w...</p>
         </a>
       
     </div>
@@ -1421,41 +1417,32 @@ function setSearchService() {
   });
 
   //一言
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
+  fetch('https://v1.hitokoto.cn').then(response => response.json())
+    .then(data => {
       var hitokoto = document.getElementById('lc-hitokoto');
       hitokoto.innerText = data.hitokoto;
     })
-    .catch(function (err) {
-      console.error(err);
-    })
+    .catch(e => console.error(e))
 
 
   //网易云随机热评
-  fetch('https://api.uomg.com/api/comments.163?format=json')
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
+  fetch('https://api.uomg.com/api/comments.163?format=json').then(response => response.json())
+    .then(data => {
       var hotComments = document.getElementById('lc-hotComments');
       hotComments.innerText = data.data.content;
     })
-    .catch(function (err) {
-      console.error(err);
-    })
+    .catch(e => console.error(e))
+
 
   document.onkeydown = function () {
     //ctrl+u
     if (event.ctrlKey && window.event.keyCode == 85) return false;
     //ctrl+s
     if (event.ctrlKey && window.event.keyCode == 83) return false;
-    if (event.ctrlKey) {
-      event.returnValue = false;
-      ShowMsg("异常检测")
-    }
+    // if (event.ctrlKey) {
+    //   event.returnValue = false;
+    //   ShowMsg("异常检测")
+    // }
   }
   function ShowMsg(str) {
     $(".payment_time_mask").remove();

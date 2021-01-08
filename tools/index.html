@@ -1335,41 +1335,32 @@ function setSearchService() {
   });
 
   //一言
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
+  fetch('https://v1.hitokoto.cn').then(response => response.json())
+    .then(data => {
       var hitokoto = document.getElementById('lc-hitokoto');
       hitokoto.innerText = data.hitokoto;
     })
-    .catch(function (err) {
-      console.error(err);
-    })
+    .catch(e => console.error(e))
 
 
   //网易云随机热评
-  fetch('https://api.uomg.com/api/comments.163?format=json')
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
+  fetch('https://api.uomg.com/api/comments.163?format=json').then(response => response.json())
+    .then(data => {
       var hotComments = document.getElementById('lc-hotComments');
       hotComments.innerText = data.data.content;
     })
-    .catch(function (err) {
-      console.error(err);
-    })
+    .catch(e => console.error(e))
+
 
   document.onkeydown = function () {
     //ctrl+u
     if (event.ctrlKey && window.event.keyCode == 85) return false;
     //ctrl+s
     if (event.ctrlKey && window.event.keyCode == 83) return false;
-    if (event.ctrlKey) {
-      event.returnValue = false;
-      ShowMsg("异常检测")
-    }
+    // if (event.ctrlKey) {
+    //   event.returnValue = false;
+    //   ShowMsg("异常检测")
+    // }
   }
   function ShowMsg(str) {
     $(".payment_time_mask").remove();

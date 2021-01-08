@@ -333,35 +333,6 @@
     
     
     <entry>
-      <title>IDEA中配置MySQL连接异常</title>
-      <link href="2020/09/09/IDEA%E4%B8%AD%E9%85%8D%E7%BD%AEMySQL%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8/"/>
-      <url>2020/09/09/IDEA%E4%B8%AD%E9%85%8D%E7%BD%AEMySQL%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8/</url>
-      
-        <content type="html"><![CDATA[<p>解决Server returns invalid timezone<a id="more"></a></p><h5 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h5><blockquote><p> MySQL驱动jar中的默认时区是UTC</p></blockquote><h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><h6 id="时区法"><a href="#时区法" class="headerlink" title="时区法"></a>时区法</h6><blockquote><p>一    url最后添加?serverTimezone=GMT%2B</p></blockquote><blockquote><p>二    Advanced设置“serverTimezone”属性值为Asia/Shanghai</p></blockquote><p><img src="\images/mysql timezone.png" class="lazyload" data-srcset="\images/mysql timezone.png" srcset="data:image/png;base64,666" alt></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> JavaWeb </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> java </tag>
-            
-            <tag> spring </tag>
-            
-            <tag> mysql </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Spingboot初遇web项目BUG</title>
       <link href="2020/09/09/Spingboot%E5%88%9D%E9%81%87web%E9%A1%B9%E7%9B%AEBUG/"/>
       <url>2020/09/09/Spingboot%E5%88%9D%E9%81%87web%E9%A1%B9%E7%9B%AEBUG/</url>
