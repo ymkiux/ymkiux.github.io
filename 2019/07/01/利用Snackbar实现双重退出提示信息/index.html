@@ -203,11 +203,13 @@
       <div class="m_search">
         <form name="searchform" class="form u-search-form">
           <i class="icon fas fa-search fa-fw"></i>
-          <input type="text" class="input u-search-input" placeholder="Search..." />
+          <input type="text" class="input u-search-input" placeholder="" />
         </form>
       </div>
 
 			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
 				
 				<li>
           <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
@@ -1235,6 +1237,30 @@ var loadCSS = function( href, before, media, attributes ){
 
 <!-- optional -->
 
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2.6.4/js/search.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
 
 
 
@@ -1475,10 +1501,10 @@ var loadCSS = function( href, before, media, attributes ){
     if (event.ctrlKey && window.event.keyCode == 85) return false;
     //ctrl+s
     if (event.ctrlKey && window.event.keyCode == 83) return false;
-    // if (event.ctrlKey) {
-    //   event.returnValue = false;
-    //   ShowMsg("异常检测")
-    // }
+    if (event.ctrlKey) {
+      event.returnValue = false;
+      ShowMsg("异常检测")
+    }
   }
   function ShowMsg(str) {
     $(".payment_time_mask").remove();
