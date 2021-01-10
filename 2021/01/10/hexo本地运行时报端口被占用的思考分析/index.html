@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="noindex,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv="x-dns-prefetch-control" content="on">
@@ -23,9 +19,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>次元居</title>
+  <title>hexo本地运行时报端口被占用的思考分析 - 次元居</title>
+  
+    <meta name="keywords" content="hexo,Windows">
   
 
+  
+    <meta name="description" content="FATAL Port 4000 has been used. Try other port instead.">
   
 
   <!-- feed -->
@@ -339,7 +339,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div id='cover-backstretch'></div>
           
@@ -371,477 +371,272 @@
         
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
+    
+      <h1 class="title">
+        hexo本地运行时报端口被占用的思考分析
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/06/21/博客恢复配置实现git重传/">
-        博客恢复配置实现git重传
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>更轻松的恢复基于hexo博客的重构方法
-    
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://q1.qlogo.cn/g?b=qq&nk=3255284101&s=640">
+    <p>Ymkiux</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Windows/">Windows</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2019-06-21</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年1月10日</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/实用教程/">实用教程</a>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="hexo本地运行时报端口被占用的思考分析" data-path="/2021/01/10/hexo本地运行时报端口被占用的思考分析/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <p>FATAL Port 4000 has been used. Try other port instead.<a id="more"></a></p>
+<h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><details cyan open><summary> 起因 </summary>
+              <div class="content">
+              <p><img src="\images/202101101657/cause.png" class="lazyload" data-srcset="\images/202101101657/cause.png" srcset="data:image/png;base64,666" alt></p><p>这里看到是端口4000被一个进程占用了</p>
+              </div>
+            </details>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><details cyan open><summary> 解决方法 </summary>
+              <div class="content">
+              <p>使用cmd命令行执行以下命令</p><p>1.获取端口对应进程信息</p><blockquote><p>netstat -ano|findstr 4000</p></blockquote><p>最后一列第一个便是该进程的进程号</p><p>2.通过进程号关闭该进程</p><blockquote><p>taskkill /PID 进程号 /f</p></blockquote>
+              </div>
+            </details>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><details cyan open><summary> 起因及结果截图 </summary>
+              <div class="content">
+              <p><img src="\images/202101101657/wholeCourse.png" class="lazyload" data-srcset="\images/202101101657/wholeCourse.png" srcset="data:image/png;base64,666" alt></p>
+              </div>
+            </details>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><details cyan open><summary> 总结 </summary>
+              <div class="content">
+              <p>端口被占用&gt;找到关联进程号&gt;强制停止该进程</p><ul><li>netstat -ano|findstr 被占用的端口号</li><li>taskkill /PID 以上命令获取到的进程号 /f</li></ul>
+              </div>
+            </details>
+<style>
+#起因,#方法,#结果,#总结{
+    display:none;
+}
+.article blockquote {
+    border-left: 4px solid #ffffff !important;
+}
+.article blockquote {
+    position: relative;
+    width: 40%;
+    padding: 16px;
+    transition: all 0.28s ease;
+    -moz-transition: all 0.28s ease;
+    -webkit-transition: all 0.28s ease;
+    -o-transition: all 0.28s ease;
+}
+</style>
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2019/06/21/博客恢复配置实现git重传/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://ymkiux.github.io/2021/01/10/hexo本地运行时报端口被占用的思考分析/>https://ymkiux.github.io/2021/01/10/hexo本地运行时报端口被占用的思考分析/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-10T17:48:52+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年1月10日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/hexo/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>hexo</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Windows/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Windows</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
-    <h2 class="article-title" >
-      <a href="/2019/06/13/有关github无法访问/">
-        有关github无法访问
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ymkiux.github.io/2021/01/10/hexo本地运行时报端口被占用的思考分析/&title=hexo本地运行时报端口被占用的思考分析 - 次元居&summary=FATAL Port 4000 has been used. Try other port instead."
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
     
-      <p>更优雅的解决有关github网站无法访问问题
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ymkiux.github.io/2021/01/10/hexo本地运行时报端口被占用的思考分析/&title=hexo本地运行时报端口被占用的思考分析 - 次元居&summary=FATAL Port 4000 has been used. Try other port instead."
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ymkiux.github.io/2021/01/10/hexo本地运行时报端口被占用的思考分析/&title=hexo本地运行时报端口被占用的思考分析 - 次元居&summary=FATAL Port 4000 has been used. Try other port instead."
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYCAAAAAAzB7ucAAAEaElEQVR42u3aQXLrOAwFwNz/0jMncBkPACn5V3OXxJLJRhYE6v39Zx1ZfwjAgrXAggVrgb0C+9dcn56v/v7jxorfV/25+/62B1iwYMGCBQsWLNirsOULcLiR6sG+fX568Oo5xx5gwYIFCxYsWLBgH4GdXtCn702fS/eRNjCxB1iwYMGCBQsWLNifgO0epHth7zYe6T8AWLBgwYIFCxYs2H8b9nYjsRXw+JnOCyxYsGDBggULFuyRwEb1wN3npw3Dt/28NgkDFixYsGDBggULtgSbrnRQ/Gs/tz3AggULFixYsGDBXoHdWt1Bd9pgpAPvasBjzQEsWLBgwYIFCxbsFdjqF3cbh2kgYhs+/d44wAEWLFiwYMGCBQv2Cmz5gWmQYRksvfinBWwXDCxYsGDBggULFuwV2BSy2gikcOsX9aVB9rjzAgsWLFiwYMGCBXsUNr3Ybw24uwGO9H1d+LjgYMGCBQsWLFiwYF8B2x0UnxpAf3tuGuQYnwcsWLBgwYIFCxbsFdjuBT490LSAacNx6z1gwYIFCxYsWLBgn4XdCixsFWDruS5ge/9gwYIFCxYsWLBgr8B2B9fdYEM36JE2INW/dxsbsGDBggULFixYsO+APfZFzQv+1gB+uv802AEWLFiwYMGCBQv2HbDbcN2GIQ5ObA2uiwUHCxYsWLBgwYIF+yxsN3CRbqAbtJgO4LeCIh9/DxYsWLBgwYIFC/YK7FagoRv8SBuKbsOxtY/yoBssWLBgwYIFCxbsUdjtYMP2ADwOTCwP6uPGASxYsGDBggULFuxV2PSCvNUwxIGIZgAjBU8bCbBgwYIFCxYsWLB3YdMDphs/FaCYDsa3GhywYMGCBQsWLFiwz8BOB8DTDZ66qKfv3wqEgAULFixYsGDBgn0WdquB6B6oO4DfagDajRJYsGDBggULFizYK7DdC3n34t9tENJARxrkqBYsDmyABQsWLFiwYMGCvQJbBTw1+O4WYCsw0g2EgAULFixYsGDBgr0LO35R8UK9deBuo5I2JO1BP1iwYMGCBQsWLNgrsClI9+I+Lci0cFsNyDiwARYsWLBgwYIFC3YFdjq4Ti/waSMyhZoOyqufBwsWLFiwYMGCBfsu2G6Ao9ognHr+1OD7637BggULFixYsGDBvgo23eBWAU4FLbYanXGDABYsWLBgwYIFC3YFNoXZLkz3wNMGZHp+sGDBggULFixYsHdhp6tbgO7GtxuUtKDlQTdYsGDBggULFizYo7DbF+RTA+oUeDrQTgsLFixYsGDBggUL9hnY9MDdQfdWIbqf6/5jlD8PFixYsGDBggUL9hHYadDiFmS38dgKbHz0AQsWLFiwYMGCBfuTsF3AbvCjG+BIG6HyPxZYsGDBggULFizYn4BNB+Bd8HR/KfR0/2DBggULFixYsGCfhT12cV4qyHSwPd0fWLBgwYIFCxYs2HfBtgMK4cC5epBpg9EdaE8H+2DBggULFixYsGDvwFq7CyxYsBZYsGAtsEfX/94RVysdnIkzAAAAAElFTkSuQmCC">
+          </div>
+        </div>
+      
+    
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
+          
+            href="https://t.me/share/url?url=https://ymkiux.github.io/2021/01/10/hexo本地运行时报端口被占用的思考分析/&text=hexo本地运行时报端口被占用的思考分析 - 次元居"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png">
+          
+        </a>
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2019-06-13</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Windows/">Windows</a>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2019/06/13/有关github无法访问/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2020/12/28/全局Application实例使用及分析/'>
+          <p class='title'>全局Application实例使用及分析<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>简单明了通过源码分析获取其Context对象实例
+思考-分析-解决通过Kaede Akatsuki的这篇文章了解到:
+
+Application实例在App运行时，始终存在着。
+ActivityT...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/06/12/编写雪花js特效无显示/">
-        编写雪花js特效无显示
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>原因、效果代码以及解决方法
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-06-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/06/12/编写雪花js特效无显示/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
+  </article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/06/09/运行古老项目或者他人项目时常遇bug/">
-        运行古老项目或者他人项目时常遇bug
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>更优雅的解决问题
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-06-09</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/06/09/运行古老项目或者他人项目时常遇bug/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/05/05/浅谈线程、多线程与线程池/">
-        浅谈线程、多线程与线程池
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>更轻松的理解它们之间的区别以及作用点
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-05-05</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/java多线程/">java多线程</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/05/05/浅谈线程、多线程与线程池/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/04/27/linux下通过git连接github/">
-        linux下通过git连接github
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>Ubuntu下搬砖
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-04-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Linux/">Linux</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/04/27/linux下通过git连接github/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/04/27/四种点击事件/">
-        四种点击事件
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>更优雅实现点击监听事件
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-04-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/04/27/四种点击事件/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/04/26/Androidstudio编译报错/">
-        Androidstudio异常报错
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>解决方法
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-04-26</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/AndroidBUG/">AndroidBUG</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/04/26/Androidstudio编译报错/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/04/25/碎片监听式跳转/">
-        监听式跳转
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>更优雅的处理Popupwindow监听
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-04-25</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/04/25/碎片监听式跳转/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/04/22/重装系统PE启动项无变化/">
-        重装系统PE启动项无变化
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>使用命令行解决
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-04-22</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Windows/">Windows</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/04/22/重装系统PE启动项无变化/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/page/2/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          3 / 4
-        </p>
-        
-          <a class="next" rel="next" href="/page/4/">
-            <section class="post next white-box shadow">
-              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -851,336 +646,22 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://q1.qlogo.cn/g?b=qq&nk=3255284101&s=640'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">次元居</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:shenchuanyinfu@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/ymkiux"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/AndroidBUG/" href="/categories/AndroidBUG/"
-            id="categoriesAndroidBUG"
-            ><div class='name'>AndroidBUG</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Android开发游记/" href="/categories/Android开发游记/"
-            id="categoriesAndroid开发游记"
-            ><div class='name'>Android开发游记</div><div class='badge'>(19)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/JavaWeb/" href="/categories/JavaWeb/"
-            id="categoriesJavaWeb"
-            ><div class='name'>JavaWeb</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Linux/" href="/categories/Linux/"
-            id="categoriesLinux"
-            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Windows/" href="/categories/Windows/"
-            id="categoriesWindows"
-            ><div class='name'>Windows</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/java多线程/" href="/categories/java多线程/"
-            id="categoriesjava多线程"
-            ><div class='name'>java多线程</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/实用教程/" href="/categories/实用教程/"
-            id="categories实用教程"
-            ><div class='name'>实用教程</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/算法练习/" href="/categories/算法练习/"
-            id="categories算法练习"
-            ><div class='name'>算法练习</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#起因"><span class="toc-text">起因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结果"><span class="toc-text">结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Windows/" style="font-size: 16.5px; color: #888">Windows</a> <a href="/tags/android/" style="font-size: 24px; color: #555">android</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/hexo/" style="font-size: 19px; color: #777">hexo</a> <a href="/tags/hosts/" style="font-size: 14px; color: #999">hosts</a> <a href="/tags/java/" style="font-size: 21.5px; color: #666">java</a> <a href="/tags/javascript/" style="font-size: 14px; color: #999">javascript</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/webview/" style="font-size: 14px; color: #999">webview</a>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-
-<section class="widget text shadow desktop mobile">
-  
-  <header>
-    
-      <i class="fa-fw fa fa-book fa-fw" aria-hidden="true"></i><span class='name'>一言</span>
-    
-  </header>
-
-
-  <div class='content'>
-    
-      <div id="lc-hitokoto"><center>暂未获取到数据</center></div>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget text shadow desktop mobile">
-  
-  <header>
-    
-      <i class="fa-fw fa fa-music fa-fw" aria-hidden="true"></i><span class='name'>网易云随机热评</span>
-    
-  </header>
-
-
-  <div class='content'>
-    
-      <div id="lc-hotComments"><center>暂未获取到数据</center></div>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget text shadow desktop mobile">
-  
-  <header>
-    
-      <i class="fas fa-image fa-fw" aria-hidden="true"></i><span class='name'>Pixiv日榜Top50</span>
-    
-  </header>
-
-
-  <div class='content'>
-    
-      <object style="border:0px;" type="text/x-scriptlet" data="https://api.jysafe.cn/pixiv/?color=fff&limit=50" width=100%></object>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget shadow desktop">
-  
-  <header>
-    
-      <i class="fas fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>32 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2020/01/01'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="lc-uv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="lc-sv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Sun Jan 10 2021 17:49:40 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2021-01-10 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-01-10 日';
-          }
-        </script>
-        
-      
-    </div>
-  </div>
-</section>
-
-  
 
   
 
@@ -1196,8 +677,8 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="hexo本地运行时报端口被占用的思考分析";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
