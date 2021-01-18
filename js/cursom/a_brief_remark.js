@@ -1,5 +1,5 @@
 //一言
-function hitokoto() {
+window.onload = function () {
     fetch('https://v1.hitokoto.cn').then(response => response.json())
         .then(data => {
             var hitokoto = document.getElementById('lc-hitokoto');

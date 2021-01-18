@@ -450,7 +450,11 @@
 </style>
 
 <p><center><pre id="aa" style="color:#fff"></pre></center></p>
-<p><div style="display:none" id="w">一个平平无奇的二次元编程爱好者</div></p>
+<div style="display:none" id="w">一个平平无奇的二次元编程爱好者</div>
+
+
+
+
 <script language="javascript">
     var index=0;
     var word=document.getElementById("w").innerHTML;
@@ -464,6 +468,7 @@
             return false;
         }  
     }
+     $("div").load('https://github.com/ymkiux .position-relative');
    var rotateval=0// 旋转角度
             var Interval //定时器
         window.onload=function(){
@@ -594,25 +599,6 @@
 
 
         </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.2.0" target="_blank" class="codename">Volantis</a>
-        作为主题
       
     
   </footer>
@@ -1352,10 +1338,10 @@ function setSearchService() {
     if (event.ctrlKey && window.event.keyCode == 85) return false;
     //ctrl+s
     if (event.ctrlKey && window.event.keyCode == 83) return false;
-    if (event.ctrlKey) {
-      event.returnValue = false;
-      ShowMsg("异常检测")
-    }
+    // if (event.ctrlKey) {
+    //   event.returnValue = false;
+    //   ShowMsg("异常检测")
+    // }
   }
   function ShowMsg(str) {
     $(".payment_time_mask").remove();

@@ -711,25 +711,6 @@
         </div>
       
     
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.2.0" target="_blank" class="codename">Volantis</a>
-        作为主题
-      
-    
   </footer>
 
 
@@ -1467,10 +1448,10 @@ function setSearchService() {
     if (event.ctrlKey && window.event.keyCode == 85) return false;
     //ctrl+s
     if (event.ctrlKey && window.event.keyCode == 83) return false;
-    if (event.ctrlKey) {
-      event.returnValue = false;
-      ShowMsg("异常检测")
-    }
+    // if (event.ctrlKey) {
+    //   event.returnValue = false;
+    //   ShowMsg("异常检测")
+    // }
   }
   function ShowMsg(str) {
     $(".payment_time_mask").remove();

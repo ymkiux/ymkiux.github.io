@@ -689,13 +689,6 @@
                       <div class="social-wrapper">
                         
                           
-                            <a href="mailto:shenchuanyinfu@gmail.com" class="social fas fa-envelope flat-btn"
-                              target="_blank" rel="external nofollow noopener noreferrer">
-                              
-                            </a>
-                            
-                              
-                          
                             <a href="https://github.com/ymkiux" class="social fab fa-github flat-btn"
                               target="_blank" rel="external nofollow noopener noreferrer">
                               
@@ -704,6 +697,13 @@
                               
                           
                             <a href="/" class="social fas fa-headphones-alt flat-btn"
+                              target="_blank" rel="external nofollow noopener noreferrer">
+                              
+                            </a>
+                            
+                              
+                          
+                            <a href="mailto:shenchuanyinfu@gmail.com" class="social fas fa-bug flat-btn"
                               target="_blank" rel="external nofollow noopener noreferrer">
                               
                             </a>
@@ -816,7 +816,14 @@
 
   <div class='content'>
     
-      <div><script type="text/javascript" src="/js/cursom/a_brief_remark.js"></script><div id="lc-hitokoto"><script>hitokoto()</script></div></div>
+      <p><a id="hitokoto" href="/"><em>(:з」∠)</em> 加载中…</a></p>
+
+    
+      <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    
+      <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+    
+      <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
     
   </div>
 </section>
@@ -831,14 +838,14 @@
   
   <header>
     
-      <i class="fas fa-image fa-fw" aria-hidden="true"></i><span class='name'>优秀插画师近作品</span>
+      <i class="fas fa-image fa-fw" aria-hidden="true"></i><span class='name'>P站首页美图</span>
     
   </header>
 
 
   <div class='content'>
     
-      <p><a href="https://www.pixiv.net/users/4704903" target=_blank><img style="border-radius:10px" title="画师雪島もも的插画作品" src="https://tvax1.sinaimg.cn/mw1024/006yt1Omgy1gmk47c1glmj30rs13b7wh.jpg" ></a></p>
+      <p><img class="lazyload loaded" style="border-radius:10px" src="https://api.luotianyi.work/pixiv/" ></p>
 
     
   </div>
@@ -907,8 +914,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Thu Jan 14 2021 10:27:28 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2021-01-14 日</div>
+            <div id="last-update" style="display: none;">Mon Jan 18 2021 12:10:46 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2021-01-18 日</div>
           
         </div>
         
@@ -958,7 +965,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-01-14 日';
+            document.getElementById('last-update-show').innerHTML = '2021-01-18 日';
           }
         </script>
         
@@ -1006,25 +1013,6 @@
 
 
         </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.2.0" target="_blank" class="codename">Volantis</a>
-        作为主题
       
     
   </footer>
@@ -1764,10 +1752,10 @@ function setSearchService() {
     if (event.ctrlKey && window.event.keyCode == 85) return false;
     //ctrl+s
     if (event.ctrlKey && window.event.keyCode == 83) return false;
-    if (event.ctrlKey) {
-      event.returnValue = false;
-      ShowMsg("异常检测")
-    }
+    // if (event.ctrlKey) {
+    //   event.returnValue = false;
+    //   ShowMsg("异常检测")
+    // }
   }
   function ShowMsg(str) {
     $(".payment_time_mask").remove();

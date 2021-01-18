@@ -417,10 +417,36 @@
 </blockquote>
 <div style="margin:10px"></div>
 
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="/images/video/cover/mrMiao.png" class="lazyload" data-srcset="/images/video/cover/mrMiao.png" srcset="data:image/png;base64,666"></div></div>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="https://cdn.jsdelivr.net/gh/ymkiux/ymkiux.github.io@master/images/video/cover/mrMiao.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/ymkiux/ymkiux.github.io@master/images/video/cover/mrMiao.png" srcset="data:image/png;base64,666"></div></div>
 <div class="note cyan"><p>传说，彼岸花能实现所有愿望； 但真相是彼岸花寄居在最纯净的灵魂心中，却能给周围带来灾难！丁果和他的师父，走上了消灭彼岸花、拯救世人的道路。 而每一次的拯救，都意味着要有一个同伴做出牺牲…</p></div>
 <div style="margin:10px"><video src="https://cdn.jsdelivr.net/gh/ymkiux/ymkiux.github.io@master/video/妙先生背景归寻.mp4" controls="controls" type="video/mp4" width="100%" height="100%"><br></video></div>
 
+ <!-- <script language="javascript">
+        function loadImage(obj,url,callback){
+            var img = new Image();
+            img.src = url;
+            // 判断图片是否在缓存中
+            if(img.complete){
+                callback.call(img,obj);
+                return;
+            }
+            // 图片加载到浏览器的缓存中回调函数
+            img.onload = function(){
+                callback.call(img,obj);
+            }
+        }
+
+        function showImage(obj){
+            obj.src = this.src;
+        }
+
+        var imgs = document.querySelectorAll('img');
+        for(var i = 0;i<imgs.length;i++)
+        {
+            var url = imgs[i].dataset.src;
+            loadImage(imgs[i],url,showImage);
+        }
+</script> -->
 <style>
 div.note.cyan::before {
     color: #1bcdfc;
@@ -504,25 +530,6 @@ div.note.cyan::before {
 
 
         </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.2.0" target="_blank" class="codename">Volantis</a>
-        作为主题
       
     
   </footer>
@@ -1262,10 +1269,10 @@ function setSearchService() {
     if (event.ctrlKey && window.event.keyCode == 85) return false;
     //ctrl+s
     if (event.ctrlKey && window.event.keyCode == 83) return false;
-    if (event.ctrlKey) {
-      event.returnValue = false;
-      ShowMsg("异常检测")
-    }
+    // if (event.ctrlKey) {
+    //   event.returnValue = false;
+    //   ShowMsg("异常检测")
+    // }
   }
   function ShowMsg(str) {
     $(".payment_time_mask").remove();
