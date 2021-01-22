@@ -200,6 +200,38 @@
             
             
               <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/epidemicMap/
+                  
+                  
+                  
+                    id="epidemicMap"
+                  >
+                  <i class='fa fa-signal fa-fw fa-fw'></i>疫情地图
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://imnerd-api-chi.vercel.app/ui/register
+                  
+                  
+                  
+                    id="https:imnerd-api-chivercelappuiregister"
+                  >
+                  <i class='far fa-comments fa-fw fa-fw fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
                 <a class="menuitem flat-box faa-parent animated-hover" href=/about/
                   
                   
@@ -337,6 +369,38 @@
                     id="friends"
                   >
                   <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/epidemicMap/
+                  
+                  
+                  
+                    id="epidemicMap"
+                  >
+                  <i class='fa fa-signal fa-fw fa-fw'></i>疫情地图
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://imnerd-api-chi.vercel.app/ui/register
+                  
+                  
+                  
+                    id="https:imnerd-api-chivercelappuiregister"
+                  >
+                  <i class='far fa-comments fa-fw fa-fw fa-fw'></i>评论管理
                 </a>
                 
               </li>
@@ -648,7 +712,7 @@ b...</p>
   <article class="post white-box reveal shadow" id="comments">
     <p ct><i class='fas fa-comments'></i> 评论</p>
     
-    <div id="valine_container" class="valine_thread">
+    <div id="waline">
   <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
@@ -1133,7 +1197,7 @@ var loadCSS = function( href, before, media, attributes ){
 
 
   
-  <script src="/js/valine.js"></script>
+<script src="https://unpkg.com/@waline/client/dist/Waline.min.js"></script>
 
 <script>
   var GUEST_INFO = ['nick', 'mail', 'link'];
@@ -1144,63 +1208,39 @@ var loadCSS = function( href, before, media, attributes ){
   var requiredFields = 'nick,mail'.split(',').filter(function (item) {
     return REQUIRED_FIELDS.indexOf(item) > -1
   });
-
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-
-  function pjax_valine() {
-    if(!document.querySelectorAll("#valine_container")[0])return;
-
+  function pjax_waline() {
+    if(!document.querySelectorAll("#waline")[0])return;
     let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
-
     let path = pdata.commentPath;
     if (path.length == 0) {
       let defaultPath = '';
       path = defaultPath || decodeURI(window.location.pathname);
     }
-
-    var valine = new Valine();
-    valine.init({
-      el: '#valine_container',
+    new Waline({
+      el: '#waline',
       meta: meta,
       placeholder: pagePlaceholder,
       path: path,
-      appId: "n64myOhHHGfGPyLij1KS6D6f-MdYXbMMI",
-      appKey: "SgGegr6QdAUxqQOtY583kotq",
-      pageSize: '5',
-      avatar: 'robohash',
-      lang: 'zh-cn',
-      visitor: 'true',
-      highlight: 'true',
-      mathJax: 'false',
-      enableQQ: 'true',
-      recordIP: 'false',
+      serverURL: 'https://imnerd-api-chi.vercel.app/',
+      uploadImage: function(file) {
+      const formData = new FormData();
+      formData.append('image', file);
+      return fetch('https://7bu.top/api/upload', {
+        method: 'POST',
+        body: formData
+      }).then(resp => resp.json()).then(resp => resp.data.url);
+    },
       requiredFields: requiredFields,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
-    })
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-CN'
+  
+
+    });
   }
 
   $(function () {
-    pjax_valine();
+    pjax_waline();
   });
 </script>
 
@@ -1752,12 +1792,12 @@ document.addEventListener("pjax:success", listennSidebarTOC);
         
         
         
-          pjax_valine();
         
         
         
         
         
+          pjax_waline();
         
       } catch (e) {
         console.log(e);
