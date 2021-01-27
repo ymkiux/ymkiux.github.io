@@ -17,3 +17,23 @@ $("#lc-hitokoto").mouseout(function () {
     $("#lc-hitokoto").css("color", "#666");
     $("#lc-hitokoto").css("border-bottom", "0px dashed #c74f00");
 })
+
+// 'use strict';
+
+// define(
+//     ['https', 'cheerio', 'fs'],
+//     function(https, cheerio, fs){
+//         const url = "https://www.csdn.net/";
+// // 获取数据
+// https.get(url, res => {
+//     // 成功的回调函数
+//     console.log("res.statusCode:", res.statusCode);
+// }).on("error", err => {
+//     // 失败的回调函数
+//     console.log(err);
+// })
+//     }
+// );
+
+
+
