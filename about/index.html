@@ -597,8 +597,6 @@ layer.open({
   content: '<style id="system" type="text/css">        h1,h2,h3,h4,h5,h6,p,blockquote {    margin: 0;    padding: 0;}body {    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;    font-size: 13px;    line-height: 18px;    color: #737373;    margin: 10px 13px 10px 13px;}a {    color: #0069d6;}a:hover {    color: #0050a3;    text-decoration: none;}a img {    border: none;}p {    margin-bottom: 9px;}h1,h2,h3,h4,h5,h6 {    color: #404040;    line-height: 36px;}h1 {    margin-bottom: 18px;    font-size: 30px;}h2 {    font-size: 24px;}h3 {    font-size: 18px;}h4 {    font-size: 16px;}h5 {    font-size: 14px;}h6 {    font-size: 13px;}hr {    margin: 0 0 19px;    border: 0;    border-bottom: 1px solid #ccc;}blockquote {    padding: 13px 13px 21px 15px;    margin-bottom: 18px;    font-family:georgia,serif;    font-style: italic;}blockquote:before {    content:"C";    font-size:40px;    margin-left:-10px;    font-family:georgia,serif;    color:#eee;}blockquote p {    font-size: 14px;    font-weight: 300;    line-height: 18px;    margin-bottom: 0;    font-style: italic;}code, pre {    font-family: Monaco, Andale Mono, Courier New, monospace;}code {    background-color: #fee9cc;    color: rgba(0, 0, 0, 0.75);    padding: 1px 3px;    font-size: 12px;    -webkit-border-radius: 3px;    -moz-border-radius: 3px;    border-radius: 3px;}pre {    display: block;    padding: 14px;    margin: 0 0 18px;    line-height: 16px;    font-size: 11px;    border: 1px solid #d9d9d9;    white-space: pre-wrap;    word-wrap: break-word;}pre code {    background-color: #fff;    color:#737373;    font-size: 11px;    padding: 0;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    } }</style><ul><li>2.6.3<ul><li>修复bug</li><li>去除臃肿组件</li></li></ul></li></ul><ul><li>2.6.2<ul><li>修复bug</li><li>使用kotlin</li></li></ul></li></ul><ul><li>2.6.1<ul><li>修复bug</li><li>sdk升级到28</li></li></ul></li></ul>' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: 
 }); 
 </script> -->
-<!-- <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
 <script src="/js/cursom/test.js"></script>
 <script language="javascript">
     var index=0;
@@ -613,26 +611,7 @@ layer.open({
             return false;
         }  
     }
-     $("div").load('https://github.com/ymkiux .position-relative');
-   var rotateval=0// 旋转角度
-            var Interval //定时器
-        window.onload=function(){
-            rotate()
-            document.getElementById('images').onmousemove=function(){
-                clearInterval(Interval)
-            }
-            document.getElementById('images').onmouseleave=function(){
-                rotate()
-            }
-            function rotate(){
-                Interval=setInterval(function(){
-                    var img=document.getElementById('images');
-                    rotateval+=1;
-                    img.style.transform='rotate('+rotateval+'deg)'
-                    img.style.transition = '0.1s linear'
-                },100)
-            }
-        }
+
 </script>
 
 <h4 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h4><p>基于<code>Hexo</code>框架托管于<code>github</code>，使用<code>Volantis</code>主题稍作修改建成</p>
@@ -884,7 +863,7 @@ var loadCSS = function( href, before, media, attributes ){
   
     <script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
     <script type="text/javascript">
-        var imgs=["https://www.rrll.cc/tuceng/ecy.php", "https://tva2.sinaimg.cn/large/0072Vf1pgy1fodqnmj1ewj31kw0zkhdz.jpg", "https://tva4.sinaimg.cn/large/a15b4afegy1fmvjd1vtmtj21hc0u07jh.jpg", "https://tva1.sinaimg.cn/large/a15b4afegy1fmvj25ax85j21hc0u0qhn.jpg", "https://tva4.sinaimg.cn/large/0072Vf1pgy1foxkfhjrg5j31hc0u0nfw.jpg", "https://tva4.sinaimg.cn/large/0072Vf1pgy1foxkg3fvi4j31hc0u0h35.jpg", "https://tva4.sinaimg.cn/large/a15b4afegy1fmvjlmwpfbj21hc0u04qp.jpg", "https://tva4.sinaimg.cn/large/a15b4afegy1fmvk7cnw23j21hc0u0arg.jpg"];
+        var imgs=["https://tva2.sinaimg.cn/large/0072Vf1pgy1fodqnmj1ewj31kw0zkhdz.jpg", "https://tva4.sinaimg.cn/large/a15b4afegy1fmvjd1vtmtj21hc0u07jh.jpg", "https://tva1.sinaimg.cn/large/a15b4afegy1fmvj25ax85j21hc0u0qhn.jpg", "https://tva4.sinaimg.cn/large/0072Vf1pgy1foxkfhjrg5j31hc0u0nfw.jpg", "https://tva4.sinaimg.cn/large/0072Vf1pgy1foxkg3fvi4j31hc0u0h35.jpg", "https://tva4.sinaimg.cn/large/a15b4afegy1fmvjlmwpfbj21hc0u04qp.jpg", "https://tva4.sinaimg.cn/large/a15b4afegy1fmvk7cnw23j21hc0u0arg.jpg"];
         if ('true' == 'true') {
           function shuffle(arr){
             /*From countercurrent-time*/
@@ -1771,8 +1750,6 @@ document.addEventListener("pjax:success", listennSidebarTOC);
     display: none;
 }
 </style>
-
-
 
 <!-- 自定义 -->
 
