@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv="x-dns-prefetch-control" content="on">
@@ -21,9 +19,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>分类：Android开发游记 - 次元居</title>
+  <title>LeetCode题解005:最大连续1的个数 - 次元居</title>
+  
+    <meta name="keywords" content="java">
   
 
+  
+    <meta name="description" content="最大连续1的个数">
   
 
   <!-- feed -->
@@ -505,7 +507,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div id='cover-backstretch'></div>
           
@@ -536,265 +538,261 @@
         <div class='body-wrapper' id="pjax-container">
             
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
+
+
+  
+  <div class="article-meta" id="top">
     
-      
-  <section class="post-list">
     
     
-      
+      <h1 class="title">
+        LeetCode题解005:最大连续1的个数
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/11/上传本地图片到服务器详解/">
-        上传本地图片到服务器详解
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>通过思路实现上传服务器逻辑
-    
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="http://q.qlogo.cn/g?b=qq&k=29s35ggyPqzFwOBP1dHR0Q&s=0&mType=friendlist">
+    <p>Ymkiux</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/算法练习/">算法练习</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2020-09-11</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年2月8日</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <p>最大连续1的个数<a id="more"></a></p>
+<h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p><strong>题目</strong></p>
+<p>给定一个二进制数组， 计算其中最大连续1的个数。</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">输入: [1,1,0,1,1,1]</td>
+</tr>
+<tr>
+<td style="text-align:center">输出: 3</td>
+</tr>
+<tr>
+<td style="text-align:center">解释: 开头的两位和最后的三位都是连续1，所以最大连续1的个数是 3.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p><strong>注意</strong></p>
+<ul>
+<li>输入的数组只包含 <code>0</code> 和 <code>1</code>。</li>
+<li>输入数组的长度是正整数，且不超过 10,000。</li>
+</ul>
+<h5 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h5><p><strong>解法</strong></p>
+<p class="leetTitle">根据题意分析出:记录<code>连续值</code>次数<code>最大次数值</code>，通过遍历<code>依次记录值</code>，若遍历<code>元素下标值</code>为<code>零</code>则<code>记录为零</code>否则自增，通过比较记录<code>连续值个数</code>与<code>上次存入值大小</code>，然后<code>存入最大值</code>即可</p>
+
+<p>提交时间: <strong>5 个月前</strong> 执行用时: <strong>3 ms</strong> 内存消耗: <strong>40.4 MB</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static int findMaxConsecutiveOnes(int[] nums) &#123;</span><br><span class="line">        int c = 0, d = 0;</span><br><span class="line">        for (int num : nums) &#123;</span><br><span class="line">            if (num == 0) &#123;</span><br><span class="line">                c = 0;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                c++;</span><br><span class="line">            &#125;</span><br><span class="line">            d = Math.max(d, c);</span><br><span class="line">        &#125;</span><br><span class="line">        return d;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<style>
+    .leetTitle{border:1px solid #ccc}
+    #示例,#提示,#解法,#题目,#注意{display:none;}
+</style>
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/09/11/上传本地图片到服务器详解/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://ymkiux.github.io/2021/02/08/LeetCode题解005-最大连续1的个数/>https://ymkiux.github.io/2021/02/08/LeetCode题解005-最大连续1的个数/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-08T11:28:22+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年2月8日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>java</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
-    <h2 class="article-title" >
-      <a href="/2020/09/10/无限循环RecyclerView的完美方案/">
-        无限循环RecyclerView的完美方案
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ymkiux.github.io/2021/02/08/LeetCode题解005-最大连续1的个数/&title=LeetCode题解005:最大连续1的个数 - 次元居&summary=最大连续1的个数"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
     
-      <p>无限循环RecyclerView
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ymkiux.github.io/2021/02/08/LeetCode题解005-最大连续1的个数/&title=LeetCode题解005:最大连续1的个数 - 次元居&summary=最大连续1的个数"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ymkiux.github.io/2021/02/08/LeetCode题解005-最大连续1的个数/&title=LeetCode题解005:最大连续1的个数 - 次元居&summary=最大连续1的个数"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYCAAAAAAzB7ucAAAEWklEQVR42u3aS3IbMQwFQN//0skBUq4B8ECO7DR3kkb8NLUAIHz9MY6MLwRgwRpgwYI1wF6B/RqOfyb85v1vNxCu+7H7AgsWLFiwYMGCBXsVtrvw9POng1Q/715A9UJSD7BgwYIFCxYsWLDvwG5ttLrh7USh+wPYvgiwYMGCBQsWLFiwPxu2C1oF7yYO03XBggULFixYsGDB/h+w6XzdBoy0oQMsWLBgwYIFCxbs74JtNygUN5jOMy1k32o4AQsWLFiwYMGCBfsObNow8dtejz3AggULFixYsGDBXoFNR3ejpxKIbmPGqQEWLFiwYMGCBQv2Duw0QK5CbM1f/f7Tc8f3BxYsWLBgwYIFC/YKbPUApxKJtNDcPcfWxT42bIAFCxYsWLBgwYK9AjstWG/PMy2IdxOEU4VysGDBggULFixYsHdg04aK7oa7icT0+9X9pRcDFixYsGDBggUL9l3YFKx6QduF7a0Gk2lhHixYsGDBggULFuy7sNWAuRvgn54/hZnu69vnwYIFCxYsWLBgwV6FnTZgTN/fWm+aYEzP9fgaLFiwYMGCBQsW7BXYbiNGWtjebsxIGzCm+38sdIMFCxYsWLBgwYI9Cps2WJyC2r74tMBdfg4sWLBgwYIFCxbsFdhu4XhaIJ8G+mmCUoXsJhJgwYIFCxYsWLBgPwt2q0A9DrDDwD9NANKLBwsWLFiwYMGCBXsXditATwP5dHQTnenFgwULFixYsGDBgv0s2OpCW59XE5DtgnuaQIAFCxYsWLBgwYJ9F3YaOHcPcPpg3Yvefg4sWLBgwYIFCxbsO7DThokUrAq1BTMtnJefBwsWLFiwYMGCBXsFNm10SAvm08aL6bpbgN/+IMCCBQsWLFiwYMF+BGxaEJ8mBFsNGN15p+uDBQsWLFiwYMGCfQd2usBWQXpaUE/BpwX6x4YNsGDBggULFixYsEdhtwrQW40Q3ffTwngVsN2wARYsWLBgwYIFC/Yq7BSwG4hXA+8pzKlzPbqBBQsWLFiwYMGCvQq7tcC0cSMtgG8VxuOGErBgwYIFCxYsWLCvwm4F6NPGjmnAv3XB4+fBggULFixYsGDBXoVNC8/bjRGnGjqmjSjxPwhgwYIFCxYsWLBgj8JWRzcx6AKlBfi0gWPsAhYsWLBgwYIFC/YV2G6gnBa8Tycm2wX4dsMGWLBgwYIFCxYs2COw6egebBqgpwe+VgAHCxYsWLBgwYIFewU2DZifAvz0dRd6a95uQgQWLFiwYMGCBQv2HdhTjRpbgf9WwbvayDG+GLBgwYIFCxYsWLCvwKYB97RgnBbK08J1mhCBBQsWLFiwYMGC/ZmwVejp96cXs9UAUv4BgQULFixYsGDBgv1RsGmBuhvopwH/VgMIWLBgwYIFCxYs2M+ATQvO6QbThoztC23vHyxYsGDBggULFuxV2DSwnjZQVA88TRC2L6adIIAFCxYsWLBgwYI9AmvsDrBgwRpgwYI1wB4dfwFv5BWJpm8ATwAAAABJRU5ErkJggg==">
+          </div>
+        </div>
+      
+    
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
+          
+            href="https://t.me/share/url?url=https://ymkiux.github.io/2021/02/08/LeetCode题解005-最大连续1的个数/&text=LeetCode题解005:最大连续1的个数 - 次元居"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png">
+          
+        </a>
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2020-09-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2020/09/10/无限循环RecyclerView的完美方案/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/02/07/LeetCode题解004-存在重复元素/'>
+          <p class='title'>LeetCode题解004:存在重复元素<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>存在重复元素
+题目题目
+给定一个整数数组，判断是否存在重复元素。如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false 。
+示例
+
+
+示例 1
+示...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="waline">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/07/19/SensorEventListener接口实现摇一摇功能/">
-        SensorEventListener接口实现摇一摇功能
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>更优雅的实现摇一摇功能
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-07-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/07/19/SensorEventListener接口实现摇一摇功能/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/07/01/利用Snackbar实现双重退出提示信息/">
-        利用Snackbar实现双重退出提示信息
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>更优雅的实现退出提示信息
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-07-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/07/01/利用Snackbar实现双重退出提示信息/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2019/06/12/编写雪花js特效无显示/">
-        编写雪花js特效无显示
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>原因、效果代码以及解决方法
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2019-06-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2019/06/12/编写雪花js特效无显示/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/categories/Android开发游记/page/2/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          3 / 4
-        </p>
-        
-          <a class="next" rel="next" href="/categories/Android开发游记/page/4/">
-            <section class="post next white-box shadow">
-              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -802,273 +800,28 @@
     
     
 
-  <section class="widget blogger shadow desktop mobile">
-    <div class='content'>
-      
-        
-          <a class='avatar flat-box rectangle' href='/about/'>
-            <img no-lazy src='http://q.qlogo.cn/g?b=qq&k=29s35ggyPqzFwOBP1dHR0Q&s=0&mType=friendlist' />
-          </a>
-          
-              
-                
-                  <div class='text'>
-                    
-                        
-                              
-                                <p><span id="jinrishici-hitokoto">
-                                    次元居
-                                  </span></p>
-                                  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-                                  <script src="https://cdn.jsdelivr.net/gh/ymkiux/ymkiux.github.io@master/js/cursom/hitokoto.js"></script>
-                                <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
-                                  charset="utf-8"></script> -->
-                                
-                  </div>
-                  
-                    
-                      <div class="social-wrapper">
-                        
-                          
-                            <a href="https://github.com/ymkiux" class="social fab fa-github flat-btn"
-                              target="_blank" rel="external nofollow noopener noreferrer">
-                              
-                            </a>
-                            
-                              
-                          
-                            <a href="/" class="social fas fa-headphones-alt flat-btn"
-                              target="_blank" rel="external nofollow noopener noreferrer">
-                              
-                            </a>
-                            
-                              
-                          
-                            <a href="mailto:shenchuanyinfu@gmail.com" class="social fas fa-bug flat-btn"
-                              target="_blank" rel="external nofollow noopener noreferrer">
-                              
-                            </a>
-                            
-                              
-                      </div>
-                      
-    </div>
-  </section>
-  
 
-  
-    
-    
-  
 
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/AndroidBUG/" href="/categories/AndroidBUG/"
-            id="categoriesAndroidBUG"
-            ><div class='name'>AndroidBUG</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Android开发游记/" href="/categories/Android开发游记/"
-            id="categoriesAndroid开发游记"
-            ><div class='name'>Android开发游记</div><div class='badge'>(19)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/JavaWeb/" href="/categories/JavaWeb/"
-            id="categoriesJavaWeb"
-            ><div class='name'>JavaWeb</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Linux/" href="/categories/Linux/"
-            id="categoriesLinux"
-            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Windows/" href="/categories/Windows/"
-            id="categoriesWindows"
-            ><div class='name'>Windows</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/java多线程/" href="/categories/java多线程/"
-            id="categoriesjava多线程"
-            ><div class='name'>java多线程</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/实用教程/" href="/categories/实用教程/"
-            id="categories实用教程"
-            ><div class='name'>实用教程</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/算法练习/" href="/categories/算法练习/"
-            id="categories算法练习"
-            ><div class='name'>算法练习</div><div class='badge'>(6)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注意"><span class="toc-text">注意</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#解法"><span class="toc-text">解法</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Windows/" style="font-size: 16.5px; color: #888">Windows</a> <a href="/tags/android/" style="font-size: 24px; color: #555">android</a> <a href="/tags/git/" style="font-size: 19px; color: #777">git</a> <a href="/tags/github/" style="font-size: 16.5px; color: #888">github</a> <a href="/tags/hexo/" style="font-size: 19px; color: #777">hexo</a> <a href="/tags/hosts/" style="font-size: 14px; color: #999">hosts</a> <a href="/tags/java/" style="font-size: 21.5px; color: #666">java</a> <a href="/tags/javascript/" style="font-size: 14px; color: #999">javascript</a> <a href="/tags/kotlin/" style="font-size: 14px; color: #999">kotlin</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/webview/" style="font-size: 14px; color: #999">webview</a>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-
-<section class="widget shadow desktop">
-  
-  <header>
-    
-      <i class="fas fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>37 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2020/01/01'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="lc-uv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="lc-sv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Mon Feb 08 2021 11:29:02 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2021-02-08 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-02-08 日';
-          }
-        </script>
-        
-      
-    </div>
-  </div>
-</section>
-
-  
 
   
 
 
 </aside>
+
 
 
             
@@ -1078,8 +831,8 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="LeetCode题解005:最大连续1的个数";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
