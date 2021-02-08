@@ -587,20 +587,6 @@
           
         
           
-            
-  <div class="new-meta-item browse leancloud">
-    <a class='notlink'>
-      
-      <div id="lc-pv" data-title="LeetCode题解004:存在重复元素" data-path="/2021/02/07/LeetCode题解004-存在重复元素/">
-        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-        次浏览
-      </div>
-    </a>
-  </div>
-
-
-          
         
       </div>
     
@@ -637,6 +623,10 @@
 
 <p>提交时间: <strong>几秒前</strong>[17:15:09] 执行用时: <strong>8 ms</strong> 内存消耗: <strong>45.7 MB</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static boolean containsDuplicate(int[] nums) &#123;</span><br><span class="line">        HashSet&lt;Integer&gt; set=new HashSet();</span><br><span class="line">        for (Integer integer:nums)&#123;</span><br><span class="line">            set.add(integer);</span><br><span class="line">        &#125;</span><br><span class="line">        if (nums.length==set.size())return false;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p class="leetTitle">根据题意分析出<code>出现重复值</code>便返回真，通过<code>数组排序</code>然后比较<code>相邻两数</code>是否相等,若在<code>判断前</code>后者超过范围<code>溢出</code>，则表示<code>无重复值</code></p>
+
+<p>提交时间: <strong>几秒前</strong>[21:45:07] 执行用时: <strong>12 ms</strong> 内存消耗: <strong>42.2 MB</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static boolean containsDuplicate(int[] nums) &#123;</span><br><span class="line">        List&lt;Integer&gt; integers = new ArrayList&lt;&gt;();</span><br><span class="line">        for (Integer integer : nums) &#123;</span><br><span class="line">            integers.add(integer);</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.sort(integers);</span><br><span class="line">        for (int a = 0; a &lt; integers.size(); a++) &#123;</span><br><span class="line">            if (a + 1 == integers.size() || a + 1 &gt; integers.size()) return false;</span><br><span class="line">            if (integers.get(a).equals(integers.get(a + 1))) return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <style>
     .leetTitle{border:1px solid #ccc}
     #示例,#提示,#解法,#题目{display:none;}
@@ -674,7 +664,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-07T17:28:31+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-07T22:15:58+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年2月7日</p>
