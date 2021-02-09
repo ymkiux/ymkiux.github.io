@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv="x-dns-prefetch-control" content="on">
@@ -21,9 +19,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2020 - 次元居</title>
+  <title>LeetCode题解006:移动零 - 次元居</title>
+  
+    <meta name="keywords" content="java">
   
 
+  
+    <meta name="description" content="移动零">
   
 
   <!-- feed -->
@@ -56,7 +58,7 @@
 <body>
 
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -505,7 +507,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div id='cover-backstretch'></div>
           
@@ -537,261 +539,265 @@
             
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
+    
+      <h1 class="title">
+        LeetCode题解006:移动零
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/25/自定义Adapter实现无限存余/">
-        自定义Adapter实现无限存余
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>继承无限循环adapter 重写实现有限adapter
-    
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="http://q.qlogo.cn/g?b=qq&k=29s35ggyPqzFwOBP1dHR0Q&s=0&mType=friendlist">
+    <p>Ymkiux</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/算法练习/">算法练习</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2020-09-25</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年2月9日</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <p>移动零<a id="more"></a></p>
+<h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p><strong>题目</strong></p>
+<p>给定一个数组 <code>nums</code>，编写一个函数将所有 <code>0</code> 移动到数组的末尾，同时保持非零元素的相对顺序。</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>示例 </strong></th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">输入: [0,1,0,3,12]</td>
+<td style="text-align:center">必须在原数组上操作，不能拷贝额外的数组。</td>
+</tr>
+<tr>
+<td style="text-align:center">输出: [1,3,12,0,0]</td>
+<td style="text-align:center">尽量减少操作次数。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h5><p><strong>解法</strong></p>
+<p class="leetTitle">根据题意:<code>非零在前，后补零</code>，当发现<code>非零值</code>时，可以将其<code>赋值</code>在标识的<code>元素下标</code>内,并将标识<code>自增</code>，当<code>遍历完</code>时<code>零元素值</code>已<code>不存在</code>，<code>标识值</code>为<code>非零元素个数</code>也可视为<code>当前数组中最后变化的下标</code>，从<code>其至数组长度</code>依次赋值为<code>零</code>即可</p>
+
+<p>提交时间: <strong>14:54:09</strong>  执行用时: <strong>0 ms</strong> 内存消耗: <strong>38.8 MB</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static void moveZeroes(int[] nums) &#123;</span><br><span class="line">        int index = 0;</span><br><span class="line">        for (int a = 0; a &lt; nums.length; a++) &#123;</span><br><span class="line">            if (nums[a] != 0) &#123;</span><br><span class="line">                nums[index] = nums[a];</span><br><span class="line">                index += 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int a = index; a &lt; nums.length; a++) &#123;</span><br><span class="line">            nums[a] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<style>
+    .leetTitle{border:1px solid #ccc}
+    #示例,#说明,#解法,#题目{display:none;}
+</style>
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/09/25/自定义Adapter实现无限存余/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://ymkiux.github.io/2021/02/09/LeetCode题解006-移动零/>https://ymkiux.github.io/2021/02/09/LeetCode题解006-移动零/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-09T16:13:05+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年2月9日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>java</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
-    <h2 class="article-title" >
-      <a href="/2020/09/23/Android系统剪贴板的使用/">
-        Android系统剪贴板的使用
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ymkiux.github.io/2021/02/09/LeetCode题解006-移动零/&title=LeetCode题解006:移动零 - 次元居&summary=移动零"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
     
-      <p>更便捷使用系统剪切板功能
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ymkiux.github.io/2021/02/09/LeetCode题解006-移动零/&title=LeetCode题解006:移动零 - 次元居&summary=移动零"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ymkiux.github.io/2021/02/09/LeetCode题解006-移动零/&title=LeetCode题解006:移动零 - 次元居&summary=移动零"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADpklEQVR42u3aQXLbQAwEQP3/0/YDUiouBiAFOb23WBLJ7c1hasDXjxWtFwJw4MCBs8CBWwL3CtfV7/+54Zu/v33Aw/u++371usf7BQcOHDhw4MCBWwZX3VD171XgU5j0Oul+wYEDBw4cOHDgtsJVg2cXqnrdFHhqv+DAgQMHDhw4cH8FLoWZ/l21eAUHDhw4cODAgQM3G0SnAis4cODAgQMHDtz/Blce0BZX9brdwrP6+WOTfHDgwIEDBw4cuCG4FOBb/x3vFxw4cODAgQMHbglcd6UF5mlQnbre2H7BgQMHDhw4cOCWwHVf7OsWlylgdRCePm/cAIMDBw4cOHDgwD0E171gWixOB95p4MsADA4cOHDgwIED92G46oOdBuhTmBS4WrhWAz84cODAgQMHDtxWuC7YVBEZv+gXHkD6HwIcOHDgwIEDB2473OmD3l1QxoXj8EGDAwcOHDhw4MBtg0uLvbuhqgdaLSTTYhQcOHDgwIEDB24bXLqRtEBMv58eTHoglwEYHDhw4MCBAwfuQ3DdoFkNlt0NdK9bfb6xgTQ4cODAgQMHDtww3FSw7A60u5DpwZXvCw4cOHDgwIEDtwzuriDbDcqnA/GpQvYSGBw4cODAgQMHbgncVBBNB8/jAXV4sA0OHDhw4MCBA7cdrvoA3Y2nQbg7KG/vAxw4cODAgQMHbilcWgimUN2NTQ+44wAMDhw4cODAgQP3MFz1xcDpYFl9gTB98bF6sODAgQMHDhw4cN8CNxVc00DaLVCnnuPyd+DAgQMHDhw4cEvgqkH1aaCpgXX6PXDgwIEDBw4cuK1w3cFwN7hWC8lu8dqGBQcOHDhw4MCBWwY3BZIOtNPvT39eboDBgQMHDhw4cOA+BHdXoVl9oe+08Jw6mLGBNDhw4MCBAwcO3BK47sB5ajD89GD7+IDBgQMHDhw4cOCWwFWLzHSgfBpoq8F86oBvb4DBgQMHDhw4cOCG4bqrGmCnisv0vunAHRw4cODAgQMHbhvcK1xThWY1SFeDa3pfcODAgQMHDhy4b4GrBt7q51NBt1ucdgfe4MCBAwcOHDhwW+GmgutUsdh9nldzHQdgcODAgQMHDhy4L4OrwrQHws2i9DRI3x6AwYEDBw4cOHDglsGlG6wWlWmh2T14cODAgQMHDhy4rXDTgbX74Glg7X6/XGSCAwcOHDhw4MB9CC4d1FYf5O7isbqvatAGBw4cOHDgwIHbAmcVgzwCcODAgbPAgfvs+gU4DAEXjsOA2AAAAABJRU5ErkJggg==">
+          </div>
+        </div>
+      
+    
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
+          
+            href="https://t.me/share/url?url=https://ymkiux.github.io/2021/02/09/LeetCode题解006-移动零/&text=LeetCode题解006:移动零 - 次元居"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png">
+          
+        </a>
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2020-09-23</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2020/09/23/Android系统剪贴板的使用/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/02/08/LeetCode题解005-最大连续1的个数/'>
+          <p class='title'>LeetCode题解005:最大连续1的个数<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>最大连续1的个数
+题目题目
+给定一个二进制数组， 计算其中最大连续1的个数。
+示例
+
+
+示例
+
+
+
+
+输入: [1,1,0,1,1,1]
+
+
+输出: 3
+
+
+解释: 开头的两位和最后的三位都是连...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="waline">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/22/LeetCode题解001-两数之和/">
-        LeetCode题解001:两数之和
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>两数之和题解
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-22</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/算法练习/">算法练习</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/22/LeetCode题解001-两数之和/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/18/实现单个activity加载多个fragment/">
-        实现单个activity加载多个fragment
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>更轻松以及简化activity使用
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-18</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/18/实现单个activity加载多个fragment/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/16/时间差零/">
-        时间差零
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>轻松解决时间差问题
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-16</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android开发游记/">Android开发游记</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/16/时间差零/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2020/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 4
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2020/page/3/">
-            <section class="post next white-box shadow">
-              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -799,273 +805,28 @@
     
     
 
-  <section class="widget blogger shadow desktop mobile">
-    <div class='content'>
-      
-        
-          <a class='avatar flat-box rectangle' href='/about/'>
-            <img no-lazy src='http://q.qlogo.cn/g?b=qq&k=29s35ggyPqzFwOBP1dHR0Q&s=0&mType=friendlist' />
-          </a>
-          
-              
-                
-                  <div class='text'>
-                    
-                        
-                              
-                                <p><span id="jinrishici-hitokoto">
-                                    次元居
-                                  </span></p>
-                                  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-                                  <script src="https://cdn.jsdelivr.net/gh/ymkiux/ymkiux.github.io@master/js/cursom/hitokoto.js"></script>
-                                <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
-                                  charset="utf-8"></script> -->
-                                
-                  </div>
-                  
-                    
-                      <div class="social-wrapper">
-                        
-                          
-                            <a href="https://github.com/ymkiux" class="social fab fa-github flat-btn"
-                              target="_blank" rel="external nofollow noopener noreferrer">
-                              
-                            </a>
-                            
-                              
-                          
-                            <a href="/" class="social fas fa-headphones-alt flat-btn"
-                              target="_blank" rel="external nofollow noopener noreferrer">
-                              
-                            </a>
-                            
-                              
-                          
-                            <a href="mailto:shenchuanyinfu@gmail.com" class="social fas fa-bug flat-btn"
-                              target="_blank" rel="external nofollow noopener noreferrer">
-                              
-                            </a>
-                            
-                              
-                      </div>
-                      
-    </div>
-  </section>
-  
 
-  
-    
-    
-  
 
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/AndroidBUG/" href="/categories/AndroidBUG/"
-            id="categoriesAndroidBUG"
-            ><div class='name'>AndroidBUG</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Android开发游记/" href="/categories/Android开发游记/"
-            id="categoriesAndroid开发游记"
-            ><div class='name'>Android开发游记</div><div class='badge'>(19)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/JavaWeb/" href="/categories/JavaWeb/"
-            id="categoriesJavaWeb"
-            ><div class='name'>JavaWeb</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Linux/" href="/categories/Linux/"
-            id="categoriesLinux"
-            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Windows/" href="/categories/Windows/"
-            id="categoriesWindows"
-            ><div class='name'>Windows</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/java多线程/" href="/categories/java多线程/"
-            id="categoriesjava多线程"
-            ><div class='name'>java多线程</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/实用教程/" href="/categories/实用教程/"
-            id="categories实用教程"
-            ><div class='name'>实用教程</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/算法练习/" href="/categories/算法练习/"
-            id="categories算法练习"
-            ><div class='name'>算法练习</div><div class='badge'>(7)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#解法"><span class="toc-text">解法</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Windows/" style="font-size: 16.5px; color: #888">Windows</a> <a href="/tags/android/" style="font-size: 24px; color: #555">android</a> <a href="/tags/git/" style="font-size: 19px; color: #777">git</a> <a href="/tags/github/" style="font-size: 16.5px; color: #888">github</a> <a href="/tags/hexo/" style="font-size: 19px; color: #777">hexo</a> <a href="/tags/hosts/" style="font-size: 14px; color: #999">hosts</a> <a href="/tags/java/" style="font-size: 21.5px; color: #666">java</a> <a href="/tags/javascript/" style="font-size: 14px; color: #999">javascript</a> <a href="/tags/kotlin/" style="font-size: 14px; color: #999">kotlin</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/webview/" style="font-size: 14px; color: #999">webview</a>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-
-<section class="widget shadow desktop">
-  
-  <header>
-    
-      <i class="fas fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>38 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2020/01/01'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="lc-uv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="lc-sv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Tue Feb 09 2021 16:25:51 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2021-02-09 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-02-09 日';
-          }
-        </script>
-        
-      
-    </div>
-  </div>
-</section>
-
-  
 
   
 
 
 </aside>
+
 
 
             
@@ -1075,14 +836,14 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="LeetCode题解006:移动零";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
