@@ -620,6 +620,10 @@
 
 <p>提交时间: <strong>14:54:09</strong>  执行用时: <strong>0 ms</strong> 内存消耗: <strong>38.8 MB</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static void moveZeroes(int[] nums) &#123;</span><br><span class="line">        int index = 0;</span><br><span class="line">        for (int a = 0; a &lt; nums.length; a++) &#123;</span><br><span class="line">            if (nums[a] != 0) &#123;</span><br><span class="line">                nums[index] = nums[a];</span><br><span class="line">                index += 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int a = index; a &lt; nums.length; a++) &#123;</span><br><span class="line">            nums[a] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p class="leetTitle">解法二<code>通俗易懂</code>，首先将<code>非零元素下标</code>依次添加至<code>新数组</code>内，然后通过<code>循环</code>将其赋值进<code>原数组</code>内，这个时候<code>新数组</code>作为<code>非零元素</code>的<ccode>集合</ccode>，那么<code>它的长度</code>便<code>可</code>作为<code>原数组</code>中<code>零元素</code>的<code>开始下标</code>，<code>依次赋值</code>为<code>零</code>即可</p>
+
+<p>提交时间: <strong>17:09:15</strong>  执行用时: <strong>1 ms</strong> 内存消耗: <strong>38.9 MB</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static void moveZeroes(int[] nums) &#123;</span><br><span class="line">        List&lt;Integer&gt; num = new ArrayList&lt;&gt;();</span><br><span class="line">        for (int a = 0; a &lt; nums.length; a++) &#123;</span><br><span class="line">            if (nums[a] != 0) &#123;</span><br><span class="line">                num.add(a);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int a = 0; a &lt; num.size(); a++) &#123;</span><br><span class="line">            nums[a] = nums[num.get(a)];</span><br><span class="line">        &#125;</span><br><span class="line">        for (int a = num.size(); a &lt; nums.length; a++) &#123;</span><br><span class="line">            nums[a] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <style>
     .leetTitle{border:1px solid #ccc}
     #示例,#说明,#解法,#题目{display:none;}
@@ -657,7 +661,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-09T16:13:05+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-09T17:20:29+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年2月9日</p>
