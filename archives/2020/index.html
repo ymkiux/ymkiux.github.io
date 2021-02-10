@@ -247,6 +247,8 @@
                 <a class="menuitem flat-box faa-parent animated-hover" href=https://imnerd-api-chi.vercel.app/ui/register
                   
                   
+                    target="_blank"
+                  
                   
                     id="https:imnerd-api-chivercelappuiregister"
                   >
@@ -460,6 +462,8 @@
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" href=https://imnerd-api-chi.vercel.app/ui/register
                   
+                  
+                    target="_blank"
                   
                   
                     id="https:imnerd-api-chivercelappuiregister"
@@ -1008,7 +1012,7 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Wed Feb 10 2021 17:49:22 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update" style="display: none;">Wed Feb 10 2021 21:06:23 GMT+0800 (GMT+08:00)</div>
             <div id="last-update-show">2021-02-10 日</div>
           
         </div>
@@ -1316,6 +1320,8 @@ var loadCSS = function( href, before, media, attributes ){
         
       
         
+      
+        
           
     <li>
       <a class='vlts-menu fix-cursor-default' 
@@ -1399,7 +1405,7 @@ var loadCSS = function( href, before, media, attributes ){
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1434,7 +1440,7 @@ var loadCSS = function( href, before, media, attributes ){
       }
 
       // 有音乐播放器
-      if ('' == true && ('navigation,home,print'||[]).includes('music')) {
+      if ('' == true && ('copy_text,navigation,home,print'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
@@ -1510,6 +1516,61 @@ var loadCSS = function( href, before, media, attributes ){
   
 
 
+
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
 
 
 
@@ -2112,6 +2173,8 @@ document.addEventListener("pjax:success", listennSidebarTOC);
         
         
         
+        
+          pjax_initCopyCode();
         
         
         
