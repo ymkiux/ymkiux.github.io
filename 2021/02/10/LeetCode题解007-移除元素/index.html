@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv="x-dns-prefetch-control" content="on">
@@ -21,9 +19,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2021/1 - 次元居</title>
+  <title>LeetCode题解007:移除元素 - 次元居</title>
+  
+    <meta name="keywords" content="java">
   
 
+  
+    <meta name="description" content="移除元素">
   
 
   <!-- feed -->
@@ -56,7 +58,7 @@
 <body>
 
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -505,7 +507,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div id='cover-backstretch'></div>
           
@@ -537,162 +539,281 @@
             
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
-      
+    
+    
+      <h1 class="title">
+        LeetCode题解007:移除元素
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="http://q.qlogo.cn/g?b=qq&k=29s35ggyPqzFwOBP1dHR0Q&s=0&mType=friendlist">
+    <p>Ymkiux</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/算法练习/">算法练习</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年2月10日</p>
+  </a>
+</div>
+
           
         
           
         
+      </div>
+    
+  </div>
+
+
+  
+  <p>移除元素<a id="more"></a></p>
+<h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p><strong>题目</strong><br>给你一个数组<code>nums</code> 和一个值<code>val</code>，你需要<code>原地</code>移除所有数值等于<code>val</code>的元素，并返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须仅使用<code>O(1)</code>额外空间并<code>原地</code>修改输入数组。<br>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><p><strong>说明</strong></p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?<br>请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。<br>你可以想象内部操作如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝</span><br><span class="line">int len = removeElement(nums, val);</span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>示例</strong></th>
+<th style="text-align:center"><strong>示例1</strong></th>
+<th style="text-align:center"><strong>示例2</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">输入</td>
+<td style="text-align:center">nums = [3,2,2,3], val = 3</td>
+<td style="text-align:center">nums = [0,1,2,2,3,0,4,2], val = 2</td>
+</tr>
+<tr>
+<td style="text-align:center">输出</td>
+<td style="text-align:center">2, nums = [2,2]</td>
+<td style="text-align:center">5, nums = [0,1,4,0,3]</td>
+</tr>
+<tr>
+<td style="text-align:center">解释</td>
+<td style="text-align:center">函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。</td>
+<td style="text-align:center">函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。注意这五个元素可为任意顺序。你不需要考虑数组中超出新长度后面的元素。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h5><p><strong>提示</strong></p>
+<ul>
+<li><code>0 &lt;= nums.length &lt;= 100</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 50</code></li>
+<li><code>0 &lt;= val &lt;= 100</code></li>
+</ul>
+<h5 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h5><p><strong>解法</strong></p>
+<p style="width:  82%;" class="leetTitle">首先将<code>非限定值</code>添加至<code>新数组</code>内，然后<code>依次遍历</code>至<code>原数组</code>内，直接返回<code>新数组</code>的<code>长度</code>即可</p>
+
+<p>提交时间: <strong>14:58:09</strong> 执行用时: <strong>1 ms</strong> 内存消耗: <strong>37 MB</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int removeElement(int[] nums, int val) &#123;</span><br><span class="line">        List&lt;Integer&gt; temporary = new ArrayList&lt;&gt;();</span><br><span class="line">        for (int a : nums) &#123;</span><br><span class="line">            if (a != val) temporary.add(a);</span><br><span class="line">        &#125;</span><br><span class="line">        for (int a = 0; a &lt; temporary.size(); a++) &#123;</span><br><span class="line">            nums[a] = temporary.get(a);</span><br><span class="line">        &#125;</span><br><span class="line">        return temporary.size();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p class="leetTitle">首先创建一个<code>新元素</code>，然后遍历<code>当前数组</code>，当<code>下标元素</code>对应的<code>值</code>不为<code>限制值</code>时，将<code>其当前下标所对应的值</code>赋值给<code>新元素</code>，然后<code>自增</code>新元素，完成<code>遍历</code>即可</p>
+
+<p>提交时间: <strong>17:31:40</strong> 执行用时: <strong>0 ms</strong> 内存消耗: <strong>36.7 MB</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static int removeElement(int[] nums, int val) &#123;</span><br><span class="line">        int b = 0;</span><br><span class="line">        for (int a = 0; a &lt; nums.length; a++) &#123;</span><br><span class="line">            if (nums[a] != val) &#123;</span><br><span class="line">                nums[b++] = nums[a];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return b;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<style>
+    .leetTitle{border:1px solid #ccc;}
+    #示例,#说明,#解法,#题目,#提示{display:none;}
+</style>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://ymkiux.github.io/2021/02/10/LeetCode题解007-移除元素/>https://ymkiux.github.io/2021/02/10/LeetCode题解007-移除元素/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-10T17:48:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年2月10日</p>
+  </a>
+</div>
+
+        
+      
+        
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>java</p></a></div>
+
+
         
       
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ymkiux.github.io/2021/02/10/LeetCode题解007-移除元素/&title=LeetCode题解007:移除元素 - 次元居&summary=移除元素"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ymkiux.github.io/2021/02/10/LeetCode题解007-移除元素/&title=LeetCode题解007:移除元素 - 次元居&summary=移除元素"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ymkiux.github.io/2021/02/10/LeetCode题解007-移除元素/&title=LeetCode题解007:移除元素 - 次元居&summary=移除元素"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
     
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADp0lEQVR42u3aUXIqMQwEQO5/6bwDpCiskQwir/1HZZeV2/kYpH38WNF6IAAHDhw4Cxy4JXCPcD27/9eDnlz/tLDwe15979h+wYEDBw4cOHDglsEdB8Biga8KP/37q/uq35PuFxw4cODAgQMHbivcaeCtgp7+fSpgn9Zfvh4cOHDgwIEDB+6PwHU3NhVgq/WCAwcOHDhw4MCB6zUYq43N6oAcHDhw4MCBAwfuf4ErD2ibn7uD7zRYf3ySDw4cOHDgwIEDNwRXXbcg3/U53i84cODAgQMHDtwSuO46bUimg+O00flzaYEDBw4cOHDgwG2Bqzb+pgPz1PNODyYdiIMDBw4cOHDgwG2DmwqotwbYaZ1TwMe/HMCBAwcOHDhw4N4M1y003Uj1ANLruwcNDhw4cODAgQO3Fa4K+Or6dCBcHTgfNx6LB/KyHnDgwIEDBw4cuCVw5UZecdCcNhZTqKnG69M6wYEDBw4cOHDglsBNBc2pArsD5ukG7fEvB3DgwIEDBw4cuA/DVRt8Uy8cTm34+oGAAwcOHDhw4MAthUsLrxbQbURWD/D0gF8eODhw4MCBAwcO3FK4NGAePzgETRut44NzcODAgQMHDhy4L4GrAqQNyncH8HjgDg4cOHDgwIEDtwRuOiheK7g56E6DNDhw4MCBAwcO3Fa46Q11B8bd56Tr+B8HHDhw4MCBAwduCdz0AHlqI9WD6wbe+JcDOHDgwIEDBw7ch+CmBsrpwDr9fOvFQ3DgwIEDBw4cuG+BqxZwq3H57iAe1wEOHDhw4MCBA7cMrvoCYPf+9Ppbg+3jOsCBAwcOHDhw4JbBdQNwFTYNpu866KfXgQMHDhw4cODAfQlc+mLfVPCdDt7tFxXBgQMHDhw4cOCWwKUvBk5DTg+mp4I1OHDgwIEDBw7ct8GlQfPWgLoazKcaq+DAgQMHDhw4cFvh0oFv2gicCr7HjcfhwTY4cODAgQMHDtwWuO46DaZTAffWi4bjvxzAgQMHDhw4cOAuwz3CVW1cpi8qTt3fHWiDAwcOHDhw4MBthasG3m7DMW1AdoN49Tm/PoMDBw4cOHDgwC2FSxuL1UA8vbHq36tBHxw4cODAgQMH7q/BdQe8aSNyCrD8fHDgwIEDBw4cuD8GNx1U00bl9PdfD8DgwIEDBw4cOHBDcFMD6Wqh1WBaHUyn0ODAgQMHDhw4cNvh0kFtd4BdDdbpfd0DBQcOHDhw4MCB2wZnFQfmCMCBAwfOAgfus+sfGZt9xHrW38AAAAAASUVORK5CYII=">
+          </div>
+        </div>
+      
     
-    <h2 class="article-title" >
-      <a href="/2021/01/29/LeetCode题解002-删除排序数组中的重复项/">
-        LeetCode题解002:删除排序数组中的重复项
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>删除排序数组中的重复项
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
+          
+            href="https://t.me/share/url?url=https://ymkiux.github.io/2021/02/10/LeetCode题解007-移除元素/&text=LeetCode题解007:移除元素 - 次元居"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png">
+          
+        </a>
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2021-01-29</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/算法练习/">算法练习</a>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2021/01/29/LeetCode题解002-删除排序数组中的重复项/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/02/09/LeetCode题解006-移动零/'>
+          <p class='title'>LeetCode题解006:移动零<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>移动零
+题目题目
+给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+示例说明
+
+
+示例 
+说明
+
+
+
+
+输入: [0,1,0,3,12]
+必须在原数...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="waline">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/27/项目初次或克隆修改提交至github过程/">
-        项目初次或克隆修改提交至github过程
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>简单记录一下，自己向远程仓库提交的过程，备用
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/实用教程/">实用教程</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/27/项目初次或克隆修改提交至github过程/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/10/hexo本地运行时报端口被占用的思考分析/">
-        hexo本地运行时报端口被占用的思考分析
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>FATAL Port 4000 has been used. Try other port instead.
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Windows/">Windows</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/10/hexo本地运行时报端口被占用的思考分析/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -700,273 +821,28 @@
     
     
 
-  <section class="widget blogger shadow desktop mobile">
-    <div class='content'>
-      
-        
-          <a class='avatar flat-box rectangle' href='/about/'>
-            <img no-lazy src='http://q.qlogo.cn/g?b=qq&k=29s35ggyPqzFwOBP1dHR0Q&s=0&mType=friendlist' />
-          </a>
-          
-              
-                
-                  <div class='text'>
-                    
-                        
-                              
-                                <p><span id="jinrishici-hitokoto">
-                                    次元居
-                                  </span></p>
-                                  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-                                  <script src="https://cdn.jsdelivr.net/gh/ymkiux/ymkiux.github.io@master/js/cursom/hitokoto.js"></script>
-                                <!-- <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
-                                  charset="utf-8"></script> -->
-                                
-                  </div>
-                  
-                    
-                      <div class="social-wrapper">
-                        
-                          
-                            <a href="https://github.com/ymkiux" class="social fab fa-github flat-btn"
-                              target="_blank" rel="external nofollow noopener noreferrer">
-                              
-                            </a>
-                            
-                              
-                          
-                            <a href="/" class="social fas fa-headphones-alt flat-btn"
-                              target="_blank" rel="external nofollow noopener noreferrer">
-                              
-                            </a>
-                            
-                              
-                          
-                            <a href="mailto:shenchuanyinfu@gmail.com" class="social fas fa-bug flat-btn"
-                              target="_blank" rel="external nofollow noopener noreferrer">
-                              
-                            </a>
-                            
-                              
-                      </div>
-                      
-    </div>
-  </section>
-  
 
-  
-    
-    
-  
 
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/AndroidBUG/" href="/categories/AndroidBUG/"
-            id="categoriesAndroidBUG"
-            ><div class='name'>AndroidBUG</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Android开发游记/" href="/categories/Android开发游记/"
-            id="categoriesAndroid开发游记"
-            ><div class='name'>Android开发游记</div><div class='badge'>(19)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/JavaWeb/" href="/categories/JavaWeb/"
-            id="categoriesJavaWeb"
-            ><div class='name'>JavaWeb</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Linux/" href="/categories/Linux/"
-            id="categoriesLinux"
-            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Windows/" href="/categories/Windows/"
-            id="categoriesWindows"
-            ><div class='name'>Windows</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/java多线程/" href="/categories/java多线程/"
-            id="categoriesjava多线程"
-            ><div class='name'>java多线程</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/实用教程/" href="/categories/实用教程/"
-            id="categories实用教程"
-            ><div class='name'>实用教程</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/算法练习/" href="/categories/算法练习/"
-            id="categories算法练习"
-            ><div class='name'>算法练习</div><div class='badge'>(8)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#提示"><span class="toc-text">提示</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#解法"><span class="toc-text">解法</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Windows/" style="font-size: 16.5px; color: #888">Windows</a> <a href="/tags/android/" style="font-size: 24px; color: #555">android</a> <a href="/tags/git/" style="font-size: 19px; color: #777">git</a> <a href="/tags/github/" style="font-size: 16.5px; color: #888">github</a> <a href="/tags/hexo/" style="font-size: 19px; color: #777">hexo</a> <a href="/tags/hosts/" style="font-size: 14px; color: #999">hosts</a> <a href="/tags/java/" style="font-size: 21.5px; color: #666">java</a> <a href="/tags/javascript/" style="font-size: 14px; color: #999">javascript</a> <a href="/tags/kotlin/" style="font-size: 14px; color: #999">kotlin</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/node-js/" style="font-size: 14px; color: #999">node.js</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/webview/" style="font-size: 14px; color: #999">webview</a>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-
-<section class="widget shadow desktop">
-  
-  <header>
-    
-      <i class="fas fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>39 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2020/01/01'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="lc-uv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="lc-sv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Wed Feb 10 2021 17:49:22 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2021-02-10 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-02-10 日';
-          }
-        </script>
-        
-      
-    </div>
-  </div>
-</section>
-
-  
 
   
 
 
 </aside>
+
 
 
             
@@ -976,14 +852,14 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="LeetCode题解007:移除元素";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
