@@ -2319,7 +2319,7 @@ kbd,
 .aplayer .aplayer-info .aplayer-music,
 .gt-container a.is--active,
 .fix-cursor-default {
-  cursor: url("https://cdn.jsdelivr.net/gh/qinxs/cdn-assets@master/img/normal.cur"), default !important;
+  cursor: url("https://cdn.jsdelivr.net/gh/ymkiux/cdn@master/blog/Img/mouseStyle/normal.cur"), default !important;
 }
 a,
 button,
@@ -2382,7 +2382,7 @@ a.result.search-result-fix,
 .gt-container .gt-comment-edit:hover,
 .gt-container .gt-comment-reply:hover,
 .fix-cursor-pointer {
-  cursor: url("https://cdn.jsdelivr.net/gh/qinxs/cdn-assets@master/img/link.cur"), pointer !important;
+  cursor: url("https://cdn.jsdelivr.net/gh/ymkiux/cdn@master/blog/Img/mouseStyle/link.cur"), pointer !important;
 }
 div#rightmenu-wrapper {
   display: none;
