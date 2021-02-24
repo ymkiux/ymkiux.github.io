@@ -556,18 +556,25 @@
   <blockquote>
 <center><span class="p large red">书</span><span class="p large green">籍</span></center>
 </blockquote>
-<h4 id="Android11开发者手册"><a href="#Android11开发者手册" class="headerlink" title="Android11开发者手册"></a>Android11开发者手册</h4><details cyan open><summary> Android11开发者手册 </summary>
-              <div class="content">
-              <div class="row"><br>   <embed src="./Android11开发者手册.pdf" width="100%" height="550" type="application/pdf"><br></div>
-              </div>
-            </details>
-<h4 id="GitHub入门与实践"><a href="#GitHub入门与实践" class="headerlink" title="GitHub入门与实践"></a>GitHub入门与实践</h4><details cyan open><summary> GitHub入门与实践 </summary>
-              <div class="content">
-              <div class="row"><br>   <embed src="./GitHub入门与实践.pdf" width="100%" height="550" type="application/pdf"><br></div>
-              </div>
-            </details>
+<h4 id="世界上最简单的会计书"><a href="#世界上最简单的会计书" class="headerlink" title="世界上最简单的会计书"></a>世界上最简单的会计书</h4><div id="book_read1"></div>
+
+<h4 id="GitHub入门与实践"><a href="#GitHub入门与实践" class="headerlink" title="GitHub入门与实践"></a>GitHub入门与实践</h4><div id="book_read2"></div>
+
+<h4 id="Android11开发者手册"><a href="#Android11开发者手册" class="headerlink" title="Android11开发者手册"></a>Android11开发者手册</h4><div id="book_read3"></div>
+
+<script src="https://cdn.jsdelivr.net/gh/pipwerks/PDFObject@master/pdfobject.min.js"></script>
+<script>
+function read(pdf,id){
+    PDFObject.embed(pdf, id);
+}
+read("./Android11开发者手册.pdf", "#book_read2");
+read("./GitHub入门与实践.pdf", "#book_read3");
+read("./世界上最简单的会计书.pdf", "#book_read1");
+</script>
+
 <style>
-#Android11开发者手册,#GitHub入门与实践{
+.pdfobject-container { height: 30rem; border: 0rem solid rgba(0,0,0,.1); 
+#Android11开发者手册,#GitHub入门与实践,#世界上最简单的会计书{
     display:none;
 }
 .article blockquote {
@@ -631,7 +638,7 @@ details summary::-webkit-details-marker { display:none; }
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android11开发者手册"><span class="toc-text">Android11开发者手册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GitHub入门与实践"><span class="toc-text">GitHub入门与实践</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#世界上最简单的会计书"><span class="toc-text">世界上最简单的会计书</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GitHub入门与实践"><span class="toc-text">GitHub入门与实践</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android11开发者手册"><span class="toc-text">Android11开发者手册</span></a></li></ol>
     </div>
   </section>
 
