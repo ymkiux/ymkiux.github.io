@@ -67,9 +67,9 @@
     
     
     
-    <category term="typescript" scheme="https://ymkiux.github.io/tags/typescript/"/>
-    
     <category term="electron" scheme="https://ymkiux.github.io/tags/electron/"/>
+    
+    <category term="typescript" scheme="https://ymkiux.github.io/tags/typescript/"/>
     
     <category term="axios" scheme="https://ymkiux.github.io/tags/axios/"/>
     
